@@ -1,0 +1,1656 @@
+{
+  "id" : 1,
+  "name" : "Solution Architecture Diagram",
+  "description" : "Draw the architectural diagram of the solution as if you were designing it from scratch.",
+  "lastModifiedDate" : "2023-10-19T19:04:20Z",
+  "lastModifiedAgent" : "structurizr-javascript",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgICFpZGVudGlmaWVycyBoaWVyYXJjaGljYWwKCiAgICBuYW1lICJTb2x1dGlvbiBBcmNoaXRlY3R1cmUgRGlhZ3JhbSIKICAgIGRlc2NyaXB0aW9uICJEcmF3IHRoZSBhcmNoaXRlY3R1cmFsIGRpYWdyYW0gb2YgdGhlIHNvbHV0aW9uIGFzIGlmIHlvdSB3ZXJlIGRlc2lnbmluZyBpdCBmcm9tIHNjcmF0Y2guIgoKICAgIG1vZGVsIHsKICAgICAgICBwcm9wZXJ0aWVzIHsKICAgICAgICAgICAgInN0cnVjdHVyaXpyLmdyb3VwU2VwYXJhdG9yIiAiLyIKICAgICAgICB9CiAgICAKICAgICAgICBXYXJlaG91c2VVc2VyID0gcGVyc29uICJXYXJlaG91c2UgVXNlciIgIiIgIiNFeHRlcm5hbCIKICAgICAgICBNYW5hZ2VyID0gcGVyc29uICJNYW5hZ2VyIiAiIiAiI0V4dGVybmFsLCAjV2ViQnJvd3NlciIKICAgICAgICBPbmxpbmVVc2VyID0gcGVyc29uICJPbmxpbmUgVXNlciIgIiIgIiNFeHRlcm5hbCwjRGV2aWNlIgogICAgICAgIENvdXJpZXIgPSBwZXJzb24gIkNvdXJpZXIgVXNlciIgIiIgIiNFeHRlcm5hbCwjRGV2aWNlIgoKICAgICAgICBzeXN0ZW1MZWdhY3kgPSBzb2Z0d2FyZVN5c3RlbSAiMS4gQ2VudHJhbGl6ZWQiIHsKICAgICAgICAgICAgRGF0YWJhc2UgPSBjb250YWluZXIgIkNlbnRyYWwgRGF0YWJhc2UiICJUaGVyZSBpcyBhbiBNUyBTUUwgREFUQUJBU0Ugb24gdGhlIHNlcnZlci4iICIiICIjRGF0YWJhc2UiCiAgICAgICAgICAgIAogICAgICAgICAgICBDb3VyaWVyTW9iaWxlQXBwID0gY29udGFpbmVyICJDb3VyaWVyIE1vYmlsZSBBcHBsaWNhdGlvbiIgIk1vYmlsZSB2ZXJzaW9uIGZvciBjb3VyaWVycyIgIiIgIiNEZXZpY2UiCiAgICAgICAgICAgIEN1c3RvbWVyTW9iaWxlQXBwID0gY29udGFpbmVyICJDdXN0b21lciBNb2JpbGUgQXBwbGljYXRpb24iICJNb2JpbGUgdmVyc2lvbiBmb3IgY3VzdG9tZXJzIChidXllcnMpIiAiI0RldmljZSIKICAgICAgICAgICAgCiAgICAgICAgICAgIFdhcmVob3VzZUFwcGxpY2F0aW9uID0gY29udGFpbmVyICJXYXJlaG91c2UgLSBTdG9yYWdlICYgRGVsaXZlcnkiICJEZXNrdG9wIGFwcGxpY2F0aW9uIGZvciB0aGUgd2FyZWhvdXNlIiB7CiAgICAgICAgICAgICAgICBEZXNrdG9wVUkgPSBjb21wb25lbnQgIkRlc2t0b3AgVUkiCiAgICAgICAgICAgICAgICBBdXRoZW50aWNhdGlvbiA9IGNvbXBvbmVudCAiQXV0aGVudGljYXRpb24iCiAgICAgICAgICAgICAgICBCdXNpbmVzc0xvZ2ljTGF5ZXIgPSBjb21wb25lbnQgIkJMTCIKICAgICAgICAgICAgICAgIERhdGFBY2Nlc3NMYXllciA9IGNvbXBvbmVudCAiREFMIgogICAgICAgICAgICB9CiAgICAgICAgICAgIEJhY2tPZmZpY2VBcHBsaWNhdGlvbiA9IGNvbnRhaW5lciAiQmFjayBPZmZpY2UgLSBPcmRlcnMgUHJvY2Vzc2luZyIgIldlYiB2ZXJzaW9uIGZvciBtYW5hZ2VycyIgewogICAgICAgICAgICAgICAgV2ViVUkgPSBjb21wb25lbnQgIldlYiBVSSIgIkFTUC5ORVQgTVZDIgogICAgICAgICAgICAgICAgQXV0aGVudGljYXRpb24gPSBjb21wb25lbnQgIkF1dGhlbnRpY2F0aW9uIgogICAgICAgICAgICAgICAgQnVzaW5lc3NMb2dpY0xheWVyID0gY29tcG9uZW50ICJCTEwiCiAgICAgICAgICAgICAgICBEYXRhQWNjZXNzTGF5ZXIgPSBjb21wb25lbnQgIkRBTCIKICAgICAgICAgICAgfQogICAgICAgICAgICBPbmxpbmVTaG9wQXBwbGljYXRpb24gPSBjb250YWluZXIgIk9ubGluZSBTaG9wIC0gT3JkZXJzIFBsYWNlbWVudCIgIldlYiB2ZXJzaW9uIGZvciBjdXN0b21lcnMgKGJ1eWVycykiIHsKICAgICAgICAgICAgICAgIFdlYlVJID0gY29tcG9uZW50ICJXZWIgVUkiICJBU1AuTkVUIE1WQyIKICAgICAgICAgICAgICAgIEF1dGhlbnRpY2F0aW9uID0gY29tcG9uZW50ICJBdXRoZW50aWNhdGlvbiIKICAgICAgICAgICAgICAgIEJ1c2luZXNzTG9naWNMYXllciA9IGNvbXBvbmVudCAiQkxMIgogICAgICAgICAgICAgICAgRGF0YUFjY2Vzc0xheWVyID0gY29tcG9uZW50ICJEQUwiCiAgICAgICAgICAgIH0KICAgICAgICAgICAgQ3VzdG9tZXJTZXJ2aWNlID0gY29udGFpbmVyICJNb2JpbGUgU2VydmljZSIgIk1vYmlsZSBBcHAgU2VydmljZSIgIiIgIiNBcGlTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICBXZWJBcGkgPSBjb21wb25lbnQgIldlYiBBUEkiICJBU1AuTkVUIE1WQyIKICAgICAgICAgICAgICAgIEF1dGhlbnRpY2F0aW9uID0gY29tcG9uZW50ICJBdXRoZW50aWNhdGlvbiIKICAgICAgICAgICAgICAgIEJ1c2luZXNzTG9naWNMYXllciA9IGNvbXBvbmVudCAiQkxMIgogICAgICAgICAgICAgICAgRGF0YUFjY2Vzc0xheWVyID0gY29tcG9uZW50ICJEQUwiCiAgICAgICAgICAgIH0KICAgICAgICAgICAgCiAgICAgICAgICAgICMgTW9iaWxlIEFwcGxpY2F0aW9uIGludGVyYWN0aW9ucwogICAgICAgICAgICBDb3VyaWVyTW9iaWxlQXBwIC0+IEN1c3RvbWVyU2VydmljZSAiVXNlcyIKICAgICAgICAgICAgQ3VzdG9tZXJNb2JpbGVBcHAgLT4gQ3VzdG9tZXJTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICAKICAgICAgICAgICAgIyBEYXRhYmFzZSBpbnRlcmFjdGlvbnMKICAgICAgICAgICAgV2FyZWhvdXNlQXBwbGljYXRpb24gLT4gRGF0YWJhc2UgIlF1ZXJpZXMiCiAgICAgICAgICAgIEJhY2tPZmZpY2VBcHBsaWNhdGlvbiAtPiBEYXRhYmFzZSAiUXVlcmllcyIKICAgICAgICAgICAgT25saW5lU2hvcEFwcGxpY2F0aW9uIC0+IERhdGFiYXNlICJRdWVyaWVzIgogICAgICAgICAgICBDdXN0b21lclNlcnZpY2UgLT4gRGF0YWJhc2UgIlF1ZXJpZXMiCiAgICAgICAgICAgIAogICAgICAgICAgICAjIFVzZXIgaW50ZXJhY3Rpb25zCiAgICAgICAgICAgIFdhcmVob3VzZVVzZXIgLT4gV2FyZWhvdXNlQXBwbGljYXRpb24gIlVzZXMiCiAgICAgICAgICAgIE1hbmFnZXIgLT4gQmFja09mZmljZUFwcGxpY2F0aW9uICJVc2VzIgogICAgICAgICAgICBPbmxpbmVVc2VyIC0+IE9ubGluZVNob3BBcHBsaWNhdGlvbiAiVXNlcyIKICAgICAgICAgICAgT25saW5lVXNlciAtPiBDdXN0b21lck1vYmlsZUFwcCAiVXNlcyIKICAgICAgICAgICAgQ291cmllciAtPiBDb3VyaWVyTW9iaWxlQXBwICJVc2VzIgogICAgICAgIH0KICAgICAgICBzeXN0ZW1UaXJlQXJjaGl0ZWN0dXJlID0gc29mdHdhcmVTeXN0ZW0gIjIuIE11bHRpLVRpcmUiIHsKICAgICAgICAgICAgRGF0YWJhc2UgPSBjb250YWluZXIgIkNlbnRyYWwgRGF0YWJhc2UiICJUaGVyZSBpcyBhbiBNUyBTUUwgREFUQUJBU0Ugb24gdGhlIHNlcnZlci4iICIiICIjRGF0YWJhc2UiCiAgICAgICAgICAgIAogICAgICAgICAgICBDb3VyaWVyTW9iaWxlQXBwID0gY29udGFpbmVyICJDb3VyaWVyIE1vYmlsZSBBcHBsaWNhdGlvbiIgIk1vYmlsZSB2ZXJzaW9uIGZvciBjb3VyaWVycyIgIiIgIiNEZXZpY2UiCiAgICAgICAgICAgIEN1c3RvbWVyTW9iaWxlQXBwID0gY29udGFpbmVyICJDdXN0b21lciBNb2JpbGUgQXBwbGljYXRpb24iICJNb2JpbGUgdmVyc2lvbiBmb3IgY3VzdG9tZXJzIChidXllcnMpIiAiIiAiI0RldmljZSIKICAgICAgICAgICAgCiAgICAgICAgICAgIFdhcmVob3VzZUFwcGxpY2F0aW9uID0gY29udGFpbmVyICJXYXJlaG91c2UgLSBTdG9yYWdlICYgRGVsaXZlcnkiICJEZXNrdG9wIGFwcGxpY2F0aW9uIGZvciB0aGUgd2FyZWhvdXNlIiB7CiAgICAgICAgICAgICAgICBEZXNrdG9wVUkgPSBjb21wb25lbnQgIkRlc2t0b3AgVUkiCiAgICAgICAgICAgICAgICBJbmZyYXN0cnVjdHVyZUxheWVyID0gY29tcG9uZW50ICJTZXJ2aWNlIENvbW11bmljYXRpb24iCgogICAgICAgICAgICAgICAgRGVza3RvcFVJIC0+IEluZnJhc3RydWN0dXJlTGF5ZXIKICAgICAgICAgICAgfQogICAgICAgICAgICBCYWNrT2ZmaWNlQXBwbGljYXRpb24gPSBjb250YWluZXIgIkJhY2sgT2ZmaWNlIC0gT3JkZXJzIFByb2Nlc3NpbmciICJXZWIgdmVyc2lvbiBmb3IgbWFuYWdlcnMiIHsKICAgICAgICAgICAgICAgIFdlYlVJID0gY29tcG9uZW50ICJXZWIgVUkiICJBU1AuTkVUIE1WQyIKICAgICAgICAgICAgICAgIEluZnJhc3RydWN0dXJlTGF5ZXIgPSBjb21wb25lbnQgIlNlcnZpY2UgQ29tbXVuaWNhdGlvbiIKICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgV2ViVUkgLT4gSW5mcmFzdHJ1Y3R1cmVMYXllcgogICAgICAgICAgICB9CiAgICAgICAgICAgIE9ubGluZVNob3BBcHBsaWNhdGlvbiA9IGNvbnRhaW5lciAiT25saW5lIFNob3AgLSBPcmRlcnMgUGxhY2VtZW50IiAiV2ViIHZlcnNpb24gZm9yIGN1c3RvbWVycyAoYnV5ZXJzKSIgewogICAgICAgICAgICAgICAgV2ViVUkgPSBjb21wb25lbnQgIldlYiBVSSIgIkFTUC5ORVQgTVZDIgogICAgICAgICAgICAgICAgSW5mcmFzdHJ1Y3R1cmVMYXllciA9IGNvbXBvbmVudCAiU2VydmljZSBDb21tdW5pY2F0aW9uIgogICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBXZWJVSSAtPiBJbmZyYXN0cnVjdHVyZUxheWVyCiAgICAgICAgICAgIH0KICAgICAgICAgICAgQ3VzdG9tZXJTZXJ2aWNlID0gY29udGFpbmVyICJNb2JpbGUgU2VydmljZSIgIk1vYmlsZSBBcHAgU2VydmljZSIgIiIgIiNBcGlTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICBXZWJBcGkgPSBjb21wb25lbnQgIldlYiBBUEkiICJBU1AuTkVUIE1WQyIKICAgICAgICAgICAgICAgIEluZnJhc3RydWN0dXJlTGF5ZXIgPSBjb21wb25lbnQgIlNlcnZpY2UgQ29tbXVuaWNhdGlvbiIKICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgV2ViQXBpIC0+IEluZnJhc3RydWN0dXJlTGF5ZXIKICAgICAgICAgICAgfQogICAgICAgICAgICBncm91cCAiQ29tbW9uIFRpcmVzIiB7CiAgICAgICAgICAgICAgICBBdXRoZW50aWNhdGlvbiA9IGNvbnRhaW5lciAiQXV0aGVudGljYXRpb24iCiAgICAgICAgICAgICAgICBCdXNpbmVzc0xvZ2ljTGF5ZXIgPSBjb250YWluZXIgIkJ1c2luZXNzIExvZ2ljIFRpcmUiIHsKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IEF1dGhlbnRpY2F0aW9uICJWYWxpZGF0ZXMgQWNjZXNzIgoKICAgICAgICAgICAgICAgICAgICBXYXJlaG91c2VBcHBsaWNhdGlvbiAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICAgICAgICAgIEJhY2tPZmZpY2VBcHBsaWNhdGlvbiAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICAgICAgICAgIE9ubGluZVNob3BBcHBsaWNhdGlvbiAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICAgICAgICAgIEN1c3RvbWVyU2VydmljZSAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgRGF0YUFjY2Vzc0xheWVyID0gY29udGFpbmVyICJEYXRhIEFjY2VzcyBUaXJlIiB7CiAgICAgICAgICAgICAgICAgICAgQnVzaW5lc3NMb2dpY0xheWVyIC0+IHRoaXMgIlF1ZXJpZXMiCiAgICAgICAgICAgICAgICAgICAgdGhpcyAtPiBEYXRhYmFzZSAiVXNlcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQoKICAgICAgICAgICAgIyBNb2JpbGUgQXBwbGljYXRpb24gaW50ZXJhY3Rpb25zCiAgICAgICAgICAgIENvdXJpZXJNb2JpbGVBcHAgLT4gQ3VzdG9tZXJTZXJ2aWNlICJVc2VzIgogICAgICAgICAgICBDdXN0b21lck1vYmlsZUFwcCAtPiBDdXN0b21lclNlcnZpY2UgIlVzZXMiCiAgICAgICAgICAgIAogICAgICAgICAgICAjIFVzZXIgaW50ZXJhY3Rpb25zCiAgICAgICAgICAgIFdhcmVob3VzZVVzZXIgLT4gV2FyZWhvdXNlQXBwbGljYXRpb24gIlVzZXMiCiAgICAgICAgICAgIE1hbmFnZXIgLT4gQmFja09mZmljZUFwcGxpY2F0aW9uICJVc2VzIgogICAgICAgICAgICBPbmxpbmVVc2VyIC0+IE9ubGluZVNob3BBcHBsaWNhdGlvbiAiVXNlcyIKICAgICAgICAgICAgT25saW5lVXNlciAtPiBDdXN0b21lck1vYmlsZUFwcCAiVXNlcyIKICAgICAgICAgICAgQ291cmllciAtPiBDb3VyaWVyTW9iaWxlQXBwICJVc2VzIgogICAgICAgIH0KICAgICAgICBzeXN0ZW1EaXN0cmlidXRlZCA9IHNvZnR3YXJlU3lzdGVtICIzLiBEaXN0cmlidXRlZCIgewogICAgICAgICAgICBBdXRoZW50aWNhdGlvbiA9IGNvbnRhaW5lciAiQXV0aGVudGljYXRpb24iCiAgICAgICAgICAgIE9yZGVyc0RhdGFiYXNlID0gY29udGFpbmVyICJPcmRlcnMgRGF0YWJhc2UiICJUaGVyZSBpcyBhbiBNUyBTUUwgREFUQUJBU0Ugb24gdGhlIHNlcnZlci4iICIiICIjRGF0YWJhc2UiCiAgICAgICAgICAgIFJlcG9ydERhdGFiYXNlID0gY29udGFpbmVyICJSZXBvcnRpbmcgRGF0YWJhc2UiICJMaW1pdGVkIEFjY2VzcyBmb3IgM3JkIFBhcnR5IFByb3ZpZGVyIiAiIiAiI0RhdGFiYXNlIgogICAgICAgICAgICBTeW5jaHJvbml6YXRpb25Ccm9rZXIgPSBjb250YWluZXIgIlN5bmNocm9uaXphdGlvbiBCcm9rZXIvUXVldWUiICIiICIiICIjUXVldWUiIHsKICAgICAgICAgICAgICAgIHRoaXMgLT4gT3JkZXJzRGF0YWJhc2UgIldyaXRlcyB0byIKICAgICAgICAgICAgICAgIHRoaXMgLT4gUmVwb3J0RGF0YWJhc2UgIldyaXRlcyB0byIKICAgICAgICAgICAgfQogICAgICAgICAgICBncm91cCAiQXV0aGVudGljYXRpb24gb24gM3JkIFBhcnR5IFNlcnZpY2UiIHsKICAgICAgICAgICAgICAgIENvdXJpZXJNb2JpbGVBcHAgPSBjb250YWluZXIgIkNvdXJpZXIgTW9iaWxlIEFwcGxpY2F0aW9uIiAiTW9iaWxlIHZlcnNpb24gZm9yIGNvdXJpZXJzIgogICAgICAgICAgICAgICAgQ3VzdG9tZXJNb2JpbGVBcHAgPSBjb250YWluZXIgIkN1c3RvbWVyIE1vYmlsZSBBcHBsaWNhdGlvbiIgIk1vYmlsZSB2ZXJzaW9uIGZvciBjdXN0b21lcnMgKGJ1eWVycykiCiAgICAgICAgICAgICAgICBXYXJlaG91c2VBcHBsaWNhdGlvbiA9IGNvbnRhaW5lciAiV2FyZWhvdXNlIC0gU3RvcmFnZSAmIERlbGl2ZXJ5IiAiRGVza3RvcCBhcHBsaWNhdGlvbiBmb3IgdGhlIHdhcmVob3VzZSIgIiIgIiNEZXZpY2UiIHsKICAgICAgICAgICAgICAgICAgICBEZXNrdG9wVUkgPSBjb21wb25lbnQgIkRlc2t0b3AgVUkiCiAgICAgICAgICAgICAgICAgICAgSW5mcmFzdHJ1Y3R1cmVMYXllciA9IGNvbXBvbmVudCAiU2VydmljZSBDb21tdW5pY2F0aW9uIgogICAgICAgICAgICAgICAgICAgIERlc2t0b3BVSSAtPiBJbmZyYXN0cnVjdHVyZUxheWVyCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBCYWNrT2ZmaWNlQXBwbGljYXRpb24gPSBjb250YWluZXIgIkJhY2sgT2ZmaWNlIC0gT3JkZXJzIFByb2Nlc3NpbmciICJXZWIgdmVyc2lvbiBmb3IgbWFuYWdlcnMiIHsKICAgICAgICAgICAgICAgICAgICBXZWJVSSA9IGNvbXBvbmVudCAiV2ViIFVJIiAiQVNQLk5FVCBNVkMiCiAgICAgICAgICAgICAgICAgICAgSW5mcmFzdHJ1Y3R1cmVMYXllciA9IGNvbXBvbmVudCAiU2VydmljZSBDb21tdW5pY2F0aW9uIgogICAgICAgICAgICAgICAgICAgIFdlYlVJIC0+IEluZnJhc3RydWN0dXJlTGF5ZXIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIE9ubGluZVNob3BBcHBsaWNhdGlvbiA9IGNvbnRhaW5lciAiT25saW5lIFNob3AgLSBPcmRlcnMgUGxhY2VtZW50IiAiV2ViIHZlcnNpb24gZm9yIGN1c3RvbWVycyAoYnV5ZXJzKSIgewogICAgICAgICAgICAgICAgICAgIFdlYlVJID0gY29tcG9uZW50ICJXZWIgVUkiICJBU1AuTkVUIE1WQyIKICAgICAgICAgICAgICAgICAgICBJbmZyYXN0cnVjdHVyZUxheWVyID0gY29tcG9uZW50ICJTZXJ2aWNlIENvbW11bmljYXRpb24iCiAgICAgICAgICAgICAgICAgICAgV2ViVUkgLT4gSW5mcmFzdHJ1Y3R1cmVMYXllcgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIEN1c3RvbWVyU2VydmljZSA9IGNvbnRhaW5lciAiQ3VzdG9tZXIgU2VydmljZSIgIkluY29ycG9yYXRlcyBtb2JpbGUgZmVhdHVyZXMiICIiICIjQXBpU2VydmljZSIgewogICAgICAgICAgICAgICAgV2ViQXBpID0gY29tcG9uZW50ICJXZWIgQVBJIiAiQVNQLk5FVCBNVkMiCiAgICAgICAgICAgICAgICBJbmZyYXN0cnVjdHVyZUxheWVyID0gY29tcG9uZW50ICJTZXJ2aWNlIENvbW11bmljYXRpb24iCiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgV2ViQXBpIC0+IEluZnJhc3RydWN0dXJlTGF5ZXIKCiAgICAgICAgICAgICAgICAjIEFwcGxpY2F0aW9uIGludGVyYWN0aW9ucwogICAgICAgICAgICAgICAgQ291cmllck1vYmlsZUFwcCAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICAgICAgQ3VzdG9tZXJNb2JpbGVBcHAgLT4gdGhpcyAiVXNlcyIKICAgICAgICAgICAgICAgIE9ubGluZVNob3BBcHBsaWNhdGlvbiAtPiB0aGlzICJVc2VzIgogICAgICAgICAgICB9CiAgICAgICAgICAgIE1hbmFnZW1lbnRTZXJ2aWNlID0gY29udGFpbmVyICJNYW5hZ2VtZW50IFNlcnZpY2UiICJJbmNvcnBvcmF0ZXMgbWFuYWdlbWVudCB1c2UgY2FzZXMiICIiICIjQXBpU2VydmljZSIgewogICAgICAgICAgICAgICAgV2FyZWhvdXNlQXBwbGljYXRpb24uSW5mcmFzdHJ1Y3R1cmVMYXllciAtPiB0aGlzICJQcm9jZXNzIG9yZGVyIgogICAgICAgICAgICAgICAgQmFja09mZmljZUFwcGxpY2F0aW9uLkluZnJhc3RydWN0dXJlTGF5ZXIgLT4gdGhpcyAiUHJvY2VzcyBvcmRlciIKICAgICAgICAgICAgfQogICAgICAgICAgICBncm91cCAiQnVzaW5lc3MgTG9naWMgLSBDb21tYW5kcyIgewogICAgICAgICAgICAgICAgRGVsaXZlcnlXcml0ZVNlcnZpY2UgPSBjb250YWluZXIgIkRlbGl2ZXJ5IFdyaXRlIFNlcnZpY2UiICIiICIiICIjQXBpU2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIFdlYkFwaSA9IGNvbXBvbmVudCAiV2ViIEFQSSIKCiAgICAgICAgICAgICAgICAgICAgTWFuYWdlbWVudFNlcnZpY2UgLT4gdGhpcyAiVXBkYXRlcyBkZWxpdmVyeSBpbmZvIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gU3luY2hyb25pemF0aW9uQnJva2VyICJVcGRhdGVzIHN0YXRlIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgT3JkZXJXcml0ZVNlcnZpY2UgPSBjb250YWluZXIgIk9yZGVyaW5nIFdyaXRlIFNlcnZpY2UiICIiICIiICIjQXBpU2VydmljZSIgewogICAgICAgICAgICAgICAgICAgIFdlYkFwaSA9IGNvbXBvbmVudCAiV2ViIEFQSSIKCiAgICAgICAgICAgICAgICAgICAgTWFuYWdlbWVudFNlcnZpY2UgLT4gdGhpcyAiUHJvY2Vzc2VzIG9yZGVycyIKICAgICAgICAgICAgICAgICAgICBDdXN0b21lclNlcnZpY2UgLT4gdGhpcyAiVXNlcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IFN5bmNocm9uaXphdGlvbkJyb2tlciAiVXBkYXRlcyBzdGF0ZSIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICBncm91cCAiRGF0YSBBY2Nlc3MgLSBRdWVyaWVzIiB7CiAgICAgICAgICAgICAgICBPcmRlclJlYWRTZXJ2aWNlID0gY29udGFpbmVyICJPcmRlciBSZWFkIFNlcnZpY2UiICIiICIiICIjQXBpU2VydmljZSJ7CiAgICAgICAgICAgICAgICAgICAgV2ViQXBpID0gY29tcG9uZW50ICJXZWIgQVBJIgoKICAgICAgICAgICAgICAgICAgICBNYW5hZ2VtZW50U2VydmljZSAtPiB0aGlzICJRdWVyaWVzIgogICAgICAgICAgICAgICAgICAgIHRoaXMgLT4gT3JkZXJzRGF0YWJhc2UgIlJlYWRzIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgRGVsaXZlcnlSZWFkU2VydmljZSA9IGNvbnRhaW5lciAiRGVsaXZlcnkgUmVhZCBTZXJ2aWNlIiAiIiAiIiAiI0FwaVNlcnZpY2UiewogICAgICAgICAgICAgICAgICAgIFdlYkFwaSA9IGNvbXBvbmVudCAiV2ViIEFQSSIKCiAgICAgICAgICAgICAgICAgICAgTWFuYWdlbWVudFNlcnZpY2UgLT4gdGhpcyAiUXVlcmllcyIKICAgICAgICAgICAgICAgICAgICBDdXN0b21lclNlcnZpY2UgLT4gdGhpcyAiUXVlcmllcyIKICAgICAgICAgICAgICAgICAgICB0aGlzIC0+IE9yZGVyc0RhdGFiYXNlICJSZWFkcyIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgICAgICAjIFVzZXIgaW50ZXJhY3Rpb25zCiAgICAgICAgICAgIFdhcmVob3VzZVVzZXIgLT4gV2FyZWhvdXNlQXBwbGljYXRpb24gIlVzZXMiCiAgICAgICAgICAgIE1hbmFnZXIgLT4gQmFja09mZmljZUFwcGxpY2F0aW9uICJVc2VzIgogICAgICAgICAgICBPbmxpbmVVc2VyIC0+IE9ubGluZVNob3BBcHBsaWNhdGlvbiAiVXNlcyIKICAgICAgICAgICAgT25saW5lVXNlciAtPiBDdXN0b21lck1vYmlsZUFwcCAiVXNlcyIKICAgICAgICAgICAgQ291cmllciAtPiBDb3VyaWVyTW9iaWxlQXBwICJVc2VzIgogICAgICAgIH0KICAgICAgICBUaGlyZFBhcnR5QXV0aGVudGljYXRpb24gPSBzb2Z0d2FyZVN5c3RlbSAiM3JkIFBhcnR5IEF1dGhlbnRpY2F0aW9uIiAiIiAiI0FwaVNlcnZpY2UsI0V4dGVybmFsLCNBdXRoIiB7CiAgICAgICAgICAgIHN5c3RlbVRpcmVBcmNoaXRlY3R1cmUuQXV0aGVudGljYXRpb24gLT4gdGhpcyAiQXV0aG9yaXplcy9BdXRoZW50aWNhdGVzIHdpdGgiCiAgICAgICAgICAgIHN5c3RlbURpc3RyaWJ1dGVkLkF1dGhlbnRpY2F0aW9uIC0+IHRoaXMgIkF1dGhvcml6ZXMvQXV0aGVudGljYXRlcyB3aXRoIgogICAgICAgIH0KICAgICAgICBSZXBvcnRQb3J0YWwgPSBzb2Z0d2FyZVN5c3RlbSAiM3JkIFBhcnR5IFJlcG9ydCBTZXJ2aWNlIiAiIiAiI0V4dGVybmFsIiB7CiAgICAgICAgICAgIHRoaXMgLT4gc3lzdGVtTGVnYWN5LkRhdGFiYXNlICJSZWFkcyIKICAgICAgICAgICAgdGhpcyAtPiBzeXN0ZW1UaXJlQXJjaGl0ZWN0dXJlLkRhdGFiYXNlICJSZWFkcyIKICAgICAgICAgICAgdGhpcyAtPiBzeXN0ZW1EaXN0cmlidXRlZC5SZXBvcnREYXRhYmFzZSAiUmVhZHMiCiAgICAgICAgfQogICAgfQogICAgdmlld3MgewogICAgICAgIGNvbnRhaW5lciBzeXN0ZW1MZWdhY3kgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCB0YgogICAgICAgIH0KICAgICAgICBjb250YWluZXIgc3lzdGVtVGlyZUFyY2hpdGVjdHVyZSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IHRiCiAgICAgICAgfQogICAgICAgIGNvbnRhaW5lciBzeXN0ZW1EaXN0cmlidXRlZCB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IHRiCiAgICAgICAgfQogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIHRoZW1lIGRlZmF1bHQKICAgICAgICAgICAgCiAgICAgICAgICAgIGVsZW1lbnQgIiNFeHRlcm5hbCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiI1F1ZXVlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBQaXBlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiI0RhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIiNBcGlTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBIZXhhZ29uCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiI1dlYkJyb3dzZXIiIHsKICAgICAgICAgICAgICAgIHNoYXBlIFdlYkJyb3dzZXIKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICIjRGV2aWNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBNb2JpbGVEZXZpY2VQb3J0cmFpdAogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9Cg=="
+  },
+  "configuration" : { },
+  "model" : {
+    "people" : [ {
+      "id" : "4",
+      "tags" : "Element,Person,#External,#Device",
+      "properties" : {
+        "structurizr.dsl.identifier" : "courier"
+      },
+      "name" : "Courier User",
+      "relationships" : [ {
+        "id" : "42",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "7",
+        "description" : "Uses"
+      }, {
+        "id" : "83",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "46",
+        "description" : "Uses"
+      }, {
+        "id" : "43",
+        "sourceId" : "4",
+        "destinationId" : "5",
+        "description" : "Uses",
+        "linkedRelationshipId" : "42"
+      }, {
+        "id" : "144",
+        "sourceId" : "4",
+        "destinationId" : "85",
+        "description" : "Uses",
+        "linkedRelationshipId" : "143"
+      }, {
+        "id" : "84",
+        "sourceId" : "4",
+        "destinationId" : "44",
+        "description" : "Uses",
+        "linkedRelationshipId" : "83"
+      }, {
+        "id" : "143",
+        "tags" : "Relationship",
+        "sourceId" : "4",
+        "destinationId" : "92",
+        "description" : "Uses"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "1",
+      "tags" : "Element,Person,#External",
+      "properties" : {
+        "structurizr.dsl.identifier" : "warehouseuser"
+      },
+      "name" : "Warehouse User",
+      "relationships" : [ {
+        "id" : "77",
+        "sourceId" : "1",
+        "destinationId" : "44",
+        "description" : "Uses",
+        "linkedRelationshipId" : "76"
+      }, {
+        "id" : "35",
+        "tags" : "Relationship",
+        "sourceId" : "1",
+        "destinationId" : "9",
+        "description" : "Uses"
+      }, {
+        "id" : "137",
+        "sourceId" : "1",
+        "destinationId" : "85",
+        "description" : "Uses",
+        "linkedRelationshipId" : "136"
+      }, {
+        "id" : "136",
+        "tags" : "Relationship",
+        "sourceId" : "1",
+        "destinationId" : "94",
+        "description" : "Uses"
+      }, {
+        "id" : "36",
+        "sourceId" : "1",
+        "destinationId" : "5",
+        "description" : "Uses",
+        "linkedRelationshipId" : "35"
+      }, {
+        "id" : "76",
+        "tags" : "Relationship",
+        "sourceId" : "1",
+        "destinationId" : "48",
+        "description" : "Uses"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "2",
+      "tags" : "Element,Person,#External,#WebBrowser",
+      "properties" : {
+        "structurizr.dsl.identifier" : "manager"
+      },
+      "name" : "Manager",
+      "relationships" : [ {
+        "id" : "38",
+        "sourceId" : "2",
+        "destinationId" : "5",
+        "description" : "Uses",
+        "linkedRelationshipId" : "37"
+      }, {
+        "id" : "78",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "52",
+        "description" : "Uses"
+      }, {
+        "id" : "37",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "14",
+        "description" : "Uses"
+      }, {
+        "id" : "138",
+        "tags" : "Relationship",
+        "sourceId" : "2",
+        "destinationId" : "98",
+        "description" : "Uses"
+      }, {
+        "id" : "79",
+        "sourceId" : "2",
+        "destinationId" : "44",
+        "description" : "Uses",
+        "linkedRelationshipId" : "78"
+      }, {
+        "id" : "139",
+        "sourceId" : "2",
+        "destinationId" : "85",
+        "description" : "Uses",
+        "linkedRelationshipId" : "138"
+      } ],
+      "location" : "Unspecified"
+    }, {
+      "id" : "3",
+      "tags" : "Element,Person,#External,#Device",
+      "properties" : {
+        "structurizr.dsl.identifier" : "onlineuser"
+      },
+      "name" : "Online User",
+      "relationships" : [ {
+        "id" : "81",
+        "sourceId" : "3",
+        "destinationId" : "44",
+        "description" : "Uses",
+        "linkedRelationshipId" : "80"
+      }, {
+        "id" : "39",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "19",
+        "description" : "Uses"
+      }, {
+        "id" : "82",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "47",
+        "description" : "Uses"
+      }, {
+        "id" : "140",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "102",
+        "description" : "Uses"
+      }, {
+        "id" : "141",
+        "sourceId" : "3",
+        "destinationId" : "85",
+        "description" : "Uses",
+        "linkedRelationshipId" : "140"
+      }, {
+        "id" : "142",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "93",
+        "description" : "Uses"
+      }, {
+        "id" : "41",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "8",
+        "description" : "Uses"
+      }, {
+        "id" : "80",
+        "tags" : "Relationship",
+        "sourceId" : "3",
+        "destinationId" : "56",
+        "description" : "Uses"
+      }, {
+        "id" : "40",
+        "sourceId" : "3",
+        "destinationId" : "5",
+        "description" : "Uses",
+        "linkedRelationshipId" : "39"
+      } ],
+      "location" : "Unspecified"
+    } ],
+    "softwareSystems" : [ {
+      "id" : "145",
+      "tags" : "Element,Software System,#ApiService,#External,#Auth",
+      "properties" : {
+        "structurizr.dsl.identifier" : "thirdpartyauthentication"
+      },
+      "name" : "3rd Party Authentication",
+      "location" : "Unspecified",
+      "documentation" : { }
+    }, {
+      "id" : "44",
+      "tags" : "Element,Software System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "systemtirearchitecture"
+      },
+      "name" : "2. Multi-Tire",
+      "relationships" : [ {
+        "id" : "147",
+        "sourceId" : "44",
+        "destinationId" : "145",
+        "description" : "Authorizes/Authenticates with",
+        "linkedRelationshipId" : "146"
+      } ],
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "52",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.backofficeapplication"
+        },
+        "name" : "Back Office - Orders Processing",
+        "description" : "Web version for managers",
+        "relationships" : [ {
+          "id" : "68",
+          "tags" : "Relationship",
+          "sourceId" : "52",
+          "destinationId" : "65",
+          "description" : "Uses"
+        } ],
+        "components" : [ {
+          "id" : "53",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.backofficeapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "55",
+            "tags" : "Relationship",
+            "sourceId" : "53",
+            "destinationId" : "54"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "54",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.backofficeapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "45",
+        "tags" : "Element,Container,#Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.database"
+        },
+        "name" : "Central Database",
+        "description" : "There is an MS SQL DATABASE on the server.",
+        "documentation" : { }
+      }, {
+        "id" : "56",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.onlineshopapplication"
+        },
+        "name" : "Online Shop - Orders Placement",
+        "description" : "Web version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "69",
+          "tags" : "Relationship",
+          "sourceId" : "56",
+          "destinationId" : "65",
+          "description" : "Uses"
+        } ],
+        "components" : [ {
+          "id" : "57",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.onlineshopapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "59",
+            "tags" : "Relationship",
+            "sourceId" : "57",
+            "destinationId" : "58"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "58",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.onlineshopapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "46",
+        "tags" : "Element,Container,#Device",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.couriermobileapp"
+        },
+        "name" : "Courier Mobile Application",
+        "description" : "Mobile version for couriers",
+        "relationships" : [ {
+          "id" : "74",
+          "tags" : "Relationship",
+          "sourceId" : "46",
+          "destinationId" : "60",
+          "description" : "Uses"
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "65",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.businesslogiclayer"
+        },
+        "name" : "Business Logic Tire",
+        "relationships" : [ {
+          "id" : "66",
+          "tags" : "Relationship",
+          "sourceId" : "65",
+          "destinationId" : "64",
+          "description" : "Validates Access"
+        }, {
+          "id" : "72",
+          "tags" : "Relationship",
+          "sourceId" : "65",
+          "destinationId" : "71",
+          "description" : "Queries"
+        } ],
+        "group" : "Common Tires",
+        "documentation" : { }
+      }, {
+        "id" : "71",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.dataaccesslayer"
+        },
+        "name" : "Data Access Tire",
+        "relationships" : [ {
+          "id" : "73",
+          "tags" : "Relationship",
+          "sourceId" : "71",
+          "destinationId" : "45",
+          "description" : "Uses"
+        } ],
+        "group" : "Common Tires",
+        "documentation" : { }
+      }, {
+        "id" : "64",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.authentication"
+        },
+        "name" : "Authentication",
+        "relationships" : [ {
+          "id" : "146",
+          "tags" : "Relationship",
+          "sourceId" : "64",
+          "destinationId" : "145",
+          "description" : "Authorizes/Authenticates with"
+        } ],
+        "group" : "Common Tires",
+        "documentation" : { }
+      }, {
+        "id" : "47",
+        "tags" : "Element,Container,#Device",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.customermobileapp"
+        },
+        "name" : "Customer Mobile Application",
+        "description" : "Mobile version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "75",
+          "tags" : "Relationship",
+          "sourceId" : "47",
+          "destinationId" : "60",
+          "description" : "Uses"
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "60",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.customerservice"
+        },
+        "name" : "Mobile Service",
+        "description" : "Mobile App Service",
+        "relationships" : [ {
+          "id" : "70",
+          "tags" : "Relationship",
+          "sourceId" : "60",
+          "destinationId" : "65",
+          "description" : "Uses"
+        } ],
+        "components" : [ {
+          "id" : "61",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.customerservice.webapi"
+          },
+          "name" : "Web API",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "63",
+            "tags" : "Relationship",
+            "sourceId" : "61",
+            "destinationId" : "62"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "62",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.customerservice.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "48",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemtirearchitecture.warehouseapplication"
+        },
+        "name" : "Warehouse - Storage & Delivery",
+        "description" : "Desktop application for the warehouse",
+        "relationships" : [ {
+          "id" : "67",
+          "tags" : "Relationship",
+          "sourceId" : "48",
+          "destinationId" : "65",
+          "description" : "Uses"
+        } ],
+        "components" : [ {
+          "id" : "49",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.warehouseapplication.desktopui"
+          },
+          "name" : "Desktop UI",
+          "relationships" : [ {
+            "id" : "51",
+            "tags" : "Relationship",
+            "sourceId" : "49",
+            "destinationId" : "50"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "50",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemtirearchitecture.warehouseapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      } ],
+      "documentation" : { }
+    }, {
+      "id" : "5",
+      "tags" : "Element,Software System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "systemlegacy"
+      },
+      "name" : "1. Centralized",
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "19",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.onlineshopapplication"
+        },
+        "name" : "Online Shop - Orders Placement",
+        "description" : "Web version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "33",
+          "tags" : "Relationship",
+          "sourceId" : "19",
+          "destinationId" : "6",
+          "description" : "Queries"
+        } ],
+        "components" : [ {
+          "id" : "20",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.onlineshopapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "documentation" : { }
+        }, {
+          "id" : "22",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.onlineshopapplication.businesslogiclayer"
+          },
+          "name" : "BLL",
+          "documentation" : { }
+        }, {
+          "id" : "21",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.onlineshopapplication.authentication"
+          },
+          "name" : "Authentication",
+          "documentation" : { }
+        }, {
+          "id" : "23",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.onlineshopapplication.dataaccesslayer"
+          },
+          "name" : "DAL",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "8",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.customermobileapp"
+        },
+        "name" : "Customer Mobile Application",
+        "description" : "Mobile version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "30",
+          "tags" : "Relationship",
+          "sourceId" : "8",
+          "destinationId" : "24",
+          "description" : "Uses"
+        } ],
+        "technology" : "#Device",
+        "documentation" : { }
+      }, {
+        "id" : "6",
+        "tags" : "Element,Container,#Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.database"
+        },
+        "name" : "Central Database",
+        "description" : "There is an MS SQL DATABASE on the server.",
+        "documentation" : { }
+      }, {
+        "id" : "9",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.warehouseapplication"
+        },
+        "name" : "Warehouse - Storage & Delivery",
+        "description" : "Desktop application for the warehouse",
+        "relationships" : [ {
+          "id" : "31",
+          "tags" : "Relationship",
+          "sourceId" : "9",
+          "destinationId" : "6",
+          "description" : "Queries"
+        } ],
+        "components" : [ {
+          "id" : "13",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.warehouseapplication.dataaccesslayer"
+          },
+          "name" : "DAL",
+          "documentation" : { }
+        }, {
+          "id" : "12",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.warehouseapplication.businesslogiclayer"
+          },
+          "name" : "BLL",
+          "documentation" : { }
+        }, {
+          "id" : "11",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.warehouseapplication.authentication"
+          },
+          "name" : "Authentication",
+          "documentation" : { }
+        }, {
+          "id" : "10",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.warehouseapplication.desktopui"
+          },
+          "name" : "Desktop UI",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "14",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.backofficeapplication"
+        },
+        "name" : "Back Office - Orders Processing",
+        "description" : "Web version for managers",
+        "relationships" : [ {
+          "id" : "32",
+          "tags" : "Relationship",
+          "sourceId" : "14",
+          "destinationId" : "6",
+          "description" : "Queries"
+        } ],
+        "components" : [ {
+          "id" : "18",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.backofficeapplication.dataaccesslayer"
+          },
+          "name" : "DAL",
+          "documentation" : { }
+        }, {
+          "id" : "16",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.backofficeapplication.authentication"
+          },
+          "name" : "Authentication",
+          "documentation" : { }
+        }, {
+          "id" : "15",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.backofficeapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "documentation" : { }
+        }, {
+          "id" : "17",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.backofficeapplication.businesslogiclayer"
+          },
+          "name" : "BLL",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "24",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.customerservice"
+        },
+        "name" : "Mobile Service",
+        "description" : "Mobile App Service",
+        "relationships" : [ {
+          "id" : "34",
+          "tags" : "Relationship",
+          "sourceId" : "24",
+          "destinationId" : "6",
+          "description" : "Queries"
+        } ],
+        "components" : [ {
+          "id" : "25",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.customerservice.webapi"
+          },
+          "name" : "Web API",
+          "description" : "ASP.NET MVC",
+          "documentation" : { }
+        }, {
+          "id" : "27",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.customerservice.businesslogiclayer"
+          },
+          "name" : "BLL",
+          "documentation" : { }
+        }, {
+          "id" : "26",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.customerservice.authentication"
+          },
+          "name" : "Authentication",
+          "documentation" : { }
+        }, {
+          "id" : "28",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemlegacy.customerservice.dataaccesslayer"
+          },
+          "name" : "DAL",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "7",
+        "tags" : "Element,Container,#Device",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemlegacy.couriermobileapp"
+        },
+        "name" : "Courier Mobile Application",
+        "description" : "Mobile version for couriers",
+        "relationships" : [ {
+          "id" : "29",
+          "tags" : "Relationship",
+          "sourceId" : "7",
+          "destinationId" : "24",
+          "description" : "Uses"
+        } ],
+        "documentation" : { }
+      } ],
+      "documentation" : { }
+    }, {
+      "id" : "85",
+      "tags" : "Element,Software System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "systemdistributed"
+      },
+      "name" : "3. Distributed",
+      "relationships" : [ {
+        "id" : "149",
+        "sourceId" : "85",
+        "destinationId" : "145",
+        "description" : "Authorizes/Authenticates with",
+        "linkedRelationshipId" : "148"
+      } ],
+      "location" : "Unspecified",
+      "containers" : [ {
+        "id" : "89",
+        "tags" : "Element,Container,#Queue",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.synchronizationbroker"
+        },
+        "name" : "Synchronization Broker/Queue",
+        "relationships" : [ {
+          "id" : "91",
+          "tags" : "Relationship",
+          "sourceId" : "89",
+          "destinationId" : "88",
+          "description" : "Writes to"
+        }, {
+          "id" : "90",
+          "tags" : "Relationship",
+          "sourceId" : "89",
+          "destinationId" : "87",
+          "description" : "Writes to"
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "113",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.managementservice"
+        },
+        "name" : "Management Service",
+        "description" : "Incorporates management use cases",
+        "relationships" : [ {
+          "id" : "120",
+          "tags" : "Relationship",
+          "sourceId" : "113",
+          "destinationId" : "118",
+          "description" : "Updates delivery info"
+        }, {
+          "id" : "129",
+          "tags" : "Relationship",
+          "sourceId" : "113",
+          "destinationId" : "127",
+          "description" : "Queries"
+        }, {
+          "id" : "124",
+          "tags" : "Relationship",
+          "sourceId" : "113",
+          "destinationId" : "122",
+          "description" : "Processes orders"
+        }, {
+          "id" : "133",
+          "tags" : "Relationship",
+          "sourceId" : "113",
+          "destinationId" : "131",
+          "description" : "Queries"
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "102",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.onlineshopapplication"
+        },
+        "name" : "Online Shop - Orders Placement",
+        "description" : "Web version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "112",
+          "tags" : "Relationship",
+          "sourceId" : "102",
+          "destinationId" : "106",
+          "description" : "Uses"
+        } ],
+        "group" : "Authentication on 3rd Party Service",
+        "components" : [ {
+          "id" : "103",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.onlineshopapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "105",
+            "tags" : "Relationship",
+            "sourceId" : "103",
+            "destinationId" : "104"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "104",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.onlineshopapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "94",
+        "tags" : "Element,Container,#Device",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.warehouseapplication"
+        },
+        "name" : "Warehouse - Storage & Delivery",
+        "description" : "Desktop application for the warehouse",
+        "relationships" : [ {
+          "id" : "115",
+          "sourceId" : "94",
+          "destinationId" : "113",
+          "description" : "Process order",
+          "linkedRelationshipId" : "114"
+        } ],
+        "group" : "Authentication on 3rd Party Service",
+        "components" : [ {
+          "id" : "96",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.warehouseapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "relationships" : [ {
+            "id" : "114",
+            "tags" : "Relationship",
+            "sourceId" : "96",
+            "destinationId" : "113",
+            "description" : "Process order"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "95",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.warehouseapplication.desktopui"
+          },
+          "name" : "Desktop UI",
+          "relationships" : [ {
+            "id" : "97",
+            "tags" : "Relationship",
+            "sourceId" : "95",
+            "destinationId" : "96"
+          } ],
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "118",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.deliverywriteservice"
+        },
+        "name" : "Delivery Write Service",
+        "relationships" : [ {
+          "id" : "121",
+          "tags" : "Relationship",
+          "sourceId" : "118",
+          "destinationId" : "89",
+          "description" : "Updates state"
+        } ],
+        "group" : "Business Logic - Commands",
+        "components" : [ {
+          "id" : "119",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.deliverywriteservice.webapi"
+          },
+          "name" : "Web API",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "98",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.backofficeapplication"
+        },
+        "name" : "Back Office - Orders Processing",
+        "description" : "Web version for managers",
+        "relationships" : [ {
+          "id" : "117",
+          "sourceId" : "98",
+          "destinationId" : "113",
+          "description" : "Process order",
+          "linkedRelationshipId" : "116"
+        } ],
+        "group" : "Authentication on 3rd Party Service",
+        "components" : [ {
+          "id" : "99",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.backofficeapplication.webui"
+          },
+          "name" : "Web UI",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "101",
+            "tags" : "Relationship",
+            "sourceId" : "99",
+            "destinationId" : "100"
+          } ],
+          "documentation" : { }
+        }, {
+          "id" : "100",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.backofficeapplication.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "relationships" : [ {
+            "id" : "116",
+            "tags" : "Relationship",
+            "sourceId" : "100",
+            "destinationId" : "113",
+            "description" : "Process order"
+          } ],
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "93",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.customermobileapp"
+        },
+        "name" : "Customer Mobile Application",
+        "description" : "Mobile version for customers (buyers)",
+        "relationships" : [ {
+          "id" : "111",
+          "tags" : "Relationship",
+          "sourceId" : "93",
+          "destinationId" : "106",
+          "description" : "Uses"
+        } ],
+        "group" : "Authentication on 3rd Party Service",
+        "documentation" : { }
+      }, {
+        "id" : "122",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.orderwriteservice"
+        },
+        "name" : "Ordering Write Service",
+        "relationships" : [ {
+          "id" : "126",
+          "tags" : "Relationship",
+          "sourceId" : "122",
+          "destinationId" : "89",
+          "description" : "Updates state"
+        } ],
+        "group" : "Business Logic - Commands",
+        "components" : [ {
+          "id" : "123",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.orderwriteservice.webapi"
+          },
+          "name" : "Web API",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "92",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.couriermobileapp"
+        },
+        "name" : "Courier Mobile Application",
+        "description" : "Mobile version for couriers",
+        "relationships" : [ {
+          "id" : "110",
+          "tags" : "Relationship",
+          "sourceId" : "92",
+          "destinationId" : "106",
+          "description" : "Uses"
+        } ],
+        "group" : "Authentication on 3rd Party Service",
+        "documentation" : { }
+      }, {
+        "id" : "127",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.orderreadservice"
+        },
+        "name" : "Order Read Service",
+        "relationships" : [ {
+          "id" : "130",
+          "tags" : "Relationship",
+          "sourceId" : "127",
+          "destinationId" : "87",
+          "description" : "Reads"
+        } ],
+        "group" : "Data Access - Queries",
+        "components" : [ {
+          "id" : "128",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.orderreadservice.webapi"
+          },
+          "name" : "Web API",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "106",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.customerservice"
+        },
+        "name" : "Customer Service",
+        "description" : "Incorporates mobile features",
+        "relationships" : [ {
+          "id" : "134",
+          "tags" : "Relationship",
+          "sourceId" : "106",
+          "destinationId" : "131",
+          "description" : "Queries"
+        }, {
+          "id" : "125",
+          "tags" : "Relationship",
+          "sourceId" : "106",
+          "destinationId" : "122",
+          "description" : "Uses"
+        } ],
+        "components" : [ {
+          "id" : "108",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.customerservice.infrastructurelayer"
+          },
+          "name" : "Service Communication",
+          "documentation" : { }
+        }, {
+          "id" : "107",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.customerservice.webapi"
+          },
+          "name" : "Web API",
+          "description" : "ASP.NET MVC",
+          "relationships" : [ {
+            "id" : "109",
+            "tags" : "Relationship",
+            "sourceId" : "107",
+            "destinationId" : "108"
+          } ],
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "88",
+        "tags" : "Element,Container,#Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.reportdatabase"
+        },
+        "name" : "Reporting Database",
+        "description" : "Limited Access for 3rd Party Provider",
+        "documentation" : { }
+      }, {
+        "id" : "86",
+        "tags" : "Element,Container",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.authentication"
+        },
+        "name" : "Authentication",
+        "relationships" : [ {
+          "id" : "148",
+          "tags" : "Relationship",
+          "sourceId" : "86",
+          "destinationId" : "145",
+          "description" : "Authorizes/Authenticates with"
+        } ],
+        "documentation" : { }
+      }, {
+        "id" : "87",
+        "tags" : "Element,Container,#Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.ordersdatabase"
+        },
+        "name" : "Orders Database",
+        "description" : "There is an MS SQL DATABASE on the server.",
+        "documentation" : { }
+      }, {
+        "id" : "131",
+        "tags" : "Element,Container,#ApiService",
+        "properties" : {
+          "structurizr.dsl.identifier" : "systemdistributed.deliveryreadservice"
+        },
+        "name" : "Delivery Read Service",
+        "relationships" : [ {
+          "id" : "135",
+          "tags" : "Relationship",
+          "sourceId" : "131",
+          "destinationId" : "87",
+          "description" : "Reads"
+        } ],
+        "group" : "Data Access - Queries",
+        "components" : [ {
+          "id" : "132",
+          "tags" : "Element,Component",
+          "properties" : {
+            "structurizr.dsl.identifier" : "systemdistributed.deliveryreadservice.webapi"
+          },
+          "name" : "Web API",
+          "documentation" : { }
+        } ],
+        "documentation" : { }
+      } ],
+      "documentation" : { }
+    }, {
+      "id" : "150",
+      "tags" : "Element,Software System,#External",
+      "properties" : {
+        "structurizr.dsl.identifier" : "reportportal"
+      },
+      "name" : "3rd Party Report Service",
+      "relationships" : [ {
+        "id" : "155",
+        "tags" : "Relationship",
+        "sourceId" : "150",
+        "destinationId" : "88",
+        "description" : "Reads"
+      }, {
+        "id" : "154",
+        "sourceId" : "150",
+        "destinationId" : "44",
+        "description" : "Reads",
+        "linkedRelationshipId" : "153"
+      }, {
+        "id" : "153",
+        "tags" : "Relationship",
+        "sourceId" : "150",
+        "destinationId" : "45",
+        "description" : "Reads"
+      }, {
+        "id" : "152",
+        "sourceId" : "150",
+        "destinationId" : "5",
+        "description" : "Reads",
+        "linkedRelationshipId" : "151"
+      }, {
+        "id" : "156",
+        "sourceId" : "150",
+        "destinationId" : "85",
+        "description" : "Reads",
+        "linkedRelationshipId" : "155"
+      }, {
+        "id" : "151",
+        "tags" : "Relationship",
+        "sourceId" : "150",
+        "destinationId" : "6",
+        "description" : "Reads"
+      } ],
+      "location" : "Unspecified",
+      "documentation" : { }
+    } ],
+    "properties" : {
+      "structurizr.groupSeparator" : "/"
+    }
+  },
+  "documentation" : { },
+  "views" : {
+    "containerViews" : [ {
+      "key" : "Container-003",
+      "order" : 3,
+      "softwareSystemId" : "85",
+      "dimensions" : {
+        "width" : 6021,
+        "height" : 3891
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "88",
+        "x" : 1288,
+        "y" : 3299
+      }, {
+        "id" : "89",
+        "x" : 1338,
+        "y" : 2699
+      }, {
+        "id" : "150",
+        "x" : 200,
+        "y" : 2699
+      }, {
+        "id" : "131",
+        "x" : 3225,
+        "y" : 2099
+      }, {
+        "id" : "122",
+        "x" : 1713,
+        "y" : 2099
+      }, {
+        "id" : "1",
+        "x" : 988,
+        "y" : 199
+      }, {
+        "id" : "145",
+        "x" : 5371,
+        "y" : 1499
+      }, {
+        "id" : "2",
+        "x" : 1713,
+        "y" : 249
+      }, {
+        "id" : "113",
+        "x" : 1713,
+        "y" : 1499
+      }, {
+        "id" : "102",
+        "x" : 3213,
+        "y" : 899
+      }, {
+        "id" : "3",
+        "x" : 2838,
+        "y" : 249
+      }, {
+        "id" : "4",
+        "x" : 3963,
+        "y" : 249
+      }, {
+        "id" : "127",
+        "x" : 2475,
+        "y" : 2099
+      }, {
+        "id" : "106",
+        "x" : 3213,
+        "y" : 1499
+      }, {
+        "id" : "118",
+        "x" : 963,
+        "y" : 2099
+      }, {
+        "id" : "92",
+        "x" : 3963,
+        "y" : 899
+      }, {
+        "id" : "93",
+        "x" : 2463,
+        "y" : 899
+      }, {
+        "id" : "94",
+        "x" : 963,
+        "y" : 899
+      }, {
+        "id" : "86",
+        "x" : 4713,
+        "y" : 899
+      }, {
+        "id" : "98",
+        "x" : 1713,
+        "y" : 899
+      }, {
+        "id" : "87",
+        "x" : 2475,
+        "y" : 3299
+      } ],
+      "relationships" : [ {
+        "id" : "91"
+      }, {
+        "id" : "130"
+      }, {
+        "id" : "90"
+      }, {
+        "id" : "134"
+      }, {
+        "id" : "111"
+      }, {
+        "id" : "135"
+      }, {
+        "id" : "110"
+      }, {
+        "id" : "155",
+        "vertices" : [ {
+          "x" : 679,
+          "y" : 2999
+        } ]
+      }, {
+        "id" : "133",
+        "vertices" : [ {
+          "x" : 3075,
+          "y" : 1995
+        } ]
+      }, {
+        "id" : "112"
+      }, {
+        "id" : "138"
+      }, {
+        "id" : "115"
+      }, {
+        "id" : "117"
+      }, {
+        "id" : "136"
+      }, {
+        "id" : "142"
+      }, {
+        "id" : "120"
+      }, {
+        "id" : "140"
+      }, {
+        "id" : "129"
+      }, {
+        "id" : "121"
+      }, {
+        "id" : "143"
+      }, {
+        "id" : "124"
+      }, {
+        "id" : "125",
+        "vertices" : [ {
+          "x" : 2296,
+          "y" : 1995
+        } ]
+      }, {
+        "id" : "148"
+      }, {
+        "id" : "126"
+      } ]
+    }, {
+      "key" : "Container-002",
+      "order" : 2,
+      "softwareSystemId" : "44",
+      "dimensions" : {
+        "width" : 5117,
+        "height" : 3891
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "45",
+        "x" : 1233,
+        "y" : 3300
+      }, {
+        "id" : "56",
+        "x" : 1608,
+        "y" : 1500
+      }, {
+        "id" : "46",
+        "x" : 858,
+        "y" : 850
+      }, {
+        "id" : "47",
+        "x" : 1608,
+        "y" : 850
+      }, {
+        "id" : "48",
+        "x" : 2358,
+        "y" : 1500
+      }, {
+        "id" : "150",
+        "x" : 199,
+        "y" : 2700
+      }, {
+        "id" : "1",
+        "x" : 3766,
+        "y" : 800
+      }, {
+        "id" : "145",
+        "x" : 3766,
+        "y" : 3300
+      }, {
+        "id" : "2",
+        "x" : 4466,
+        "y" : 850
+      }, {
+        "id" : "3",
+        "x" : 1945,
+        "y" : 200
+      }, {
+        "id" : "4",
+        "x" : 858,
+        "y" : 200
+      }, {
+        "id" : "71",
+        "x" : 1795,
+        "y" : 2700
+      }, {
+        "id" : "60",
+        "x" : 858,
+        "y" : 1500
+      }, {
+        "id" : "52",
+        "x" : 3108,
+        "y" : 1500
+      }, {
+        "id" : "64",
+        "x" : 2545,
+        "y" : 2700
+      }, {
+        "id" : "65",
+        "x" : 1983,
+        "y" : 2100
+      } ],
+      "relationships" : [ {
+        "id" : "70"
+      }, {
+        "id" : "82"
+      }, {
+        "id" : "83"
+      }, {
+        "id" : "72"
+      }, {
+        "id" : "80",
+        "vertices" : [ {
+          "x" : 2208,
+          "y" : 746
+        }, {
+          "x" : 2208,
+          "y" : 1200
+        } ]
+      }, {
+        "id" : "153"
+      }, {
+        "id" : "74"
+      }, {
+        "id" : "73"
+      }, {
+        "id" : "76",
+        "vertices" : [ {
+          "x" : 3737,
+          "y" : 1200
+        }, {
+          "x" : 2958,
+          "y" : 1500
+        } ]
+      }, {
+        "id" : "75"
+      }, {
+        "id" : "78",
+        "vertices" : [ {
+          "x" : 4316,
+          "y" : 1200
+        } ]
+      }, {
+        "id" : "67"
+      }, {
+        "id" : "146"
+      }, {
+        "id" : "66"
+      }, {
+        "id" : "69"
+      }, {
+        "id" : "68"
+      } ]
+    }, {
+      "key" : "Container-001",
+      "order" : 1,
+      "softwareSystemId" : "5",
+      "dimensions" : {
+        "width" : 5209,
+        "height" : 2691
+      },
+      "automaticLayout" : {
+        "implementation" : "Graphviz",
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "nodeSeparation" : 300,
+        "edgeSeparation" : 0,
+        "vertices" : false
+      },
+      "externalSoftwareSystemBoundariesVisible" : true,
+      "elements" : [ {
+        "id" : "24",
+        "x" : 950,
+        "y" : 1499
+      }, {
+        "id" : "14",
+        "x" : 3200,
+        "y" : 1499
+      }, {
+        "id" : "19",
+        "x" : 1700,
+        "y" : 1499
+      }, {
+        "id" : "150",
+        "x" : 200,
+        "y" : 1499
+      }, {
+        "id" : "1",
+        "x" : 3859,
+        "y" : 799
+      }, {
+        "id" : "2",
+        "x" : 4559,
+        "y" : 849
+      }, {
+        "id" : "3",
+        "x" : 2038,
+        "y" : 199
+      }, {
+        "id" : "4",
+        "x" : 950,
+        "y" : 199
+      }, {
+        "id" : "6",
+        "x" : 1700,
+        "y" : 2099
+      }, {
+        "id" : "7",
+        "x" : 950,
+        "y" : 849
+      }, {
+        "id" : "8",
+        "x" : 1700,
+        "y" : 849
+      }, {
+        "id" : "9",
+        "x" : 2450,
+        "y" : 1499
+      } ],
+      "relationships" : [ {
+        "id" : "41"
+      }, {
+        "id" : "151",
+        "vertices" : [ {
+          "x" : 771,
+          "y" : 1799
+        } ]
+      }, {
+        "id" : "42"
+      }, {
+        "id" : "32"
+      }, {
+        "id" : "31"
+      }, {
+        "id" : "30"
+      }, {
+        "id" : "29"
+      }, {
+        "id" : "37",
+        "vertices" : [ {
+          "x" : 4409,
+          "y" : 1199
+        } ]
+      }, {
+        "id" : "35",
+        "vertices" : [ {
+          "x" : 3829,
+          "y" : 1199
+        }, {
+          "x" : 3050,
+          "y" : 1499
+        } ]
+      }, {
+        "id" : "34"
+      }, {
+        "id" : "33"
+      }, {
+        "id" : "39",
+        "vertices" : [ {
+          "x" : 2300,
+          "y" : 745
+        }, {
+          "x" : 2300,
+          "y" : 1199
+        } ]
+      } ]
+    } ],
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "tag" : "#External",
+          "background" : "#999999",
+          "color" : "#ffffff"
+        }, {
+          "tag" : "#Queue",
+          "shape" : "Pipe"
+        }, {
+          "tag" : "#Database",
+          "shape" : "Cylinder"
+        }, {
+          "tag" : "#ApiService",
+          "shape" : "Hexagon"
+        }, {
+          "tag" : "#WebBrowser",
+          "shape" : "WebBrowser"
+        }, {
+          "tag" : "#Device",
+          "shape" : "MobileDevicePortrait"
+        } ]
+      },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ],
+      "terminology" : { },
+      "metadataSymbols" : "SquareBrackets",
+      "lastSavedView" : "Container-002"
+    }
+  }
+}
