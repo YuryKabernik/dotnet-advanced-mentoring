@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.DataAccess",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain", "Domain\CartingService.Domain.csproj", "{75787BC2-C45D-475A-B0AA-4802F58642A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain.UnitTests", "..\..\tests\Domain\CartingService.Domain.UnitTests.csproj", "{F65BB563-68EC-4A53-A51F-5A44E9211ACD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{75787BC2-C45D-475A-B0AA-4802F58642A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75787BC2-C45D-475A-B0AA-4802F58642A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75787BC2-C45D-475A-B0AA-4802F58642A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

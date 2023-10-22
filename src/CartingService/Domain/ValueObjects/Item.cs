@@ -20,10 +20,10 @@ public class Item
 
     public ValidationResult Validate()
     {
-        if (this.Quantity <= 0)
+        if (this.Quantity < 1)
             return ValidationResult.FailedFrom(nameof(Quantity));
 
-        if (this.Price <= 0)
+        if (this.Price < 0)
             return ValidationResult.FailedFrom(nameof(Price));
 
         return ValidationResult.Success;

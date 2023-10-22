@@ -2,7 +2,7 @@
 
 public struct ValidationResult
 {
-    public ValidationResult(bool isValid, string name)
+    internal ValidationResult(bool isValid, string? name)
     {
         this.IsValid = isValid;
         this.PropertyName = name;
@@ -11,6 +11,6 @@ public struct ValidationResult
     public bool IsValid { get; }
     public string? PropertyName { get; }
 
-    public static readonly ValidationResult Success = new(true, string.Empty);
+    public static readonly ValidationResult Success = new(true, null);
     public static ValidationResult FailedFrom(string propertyName) => new(false, propertyName);
 }
