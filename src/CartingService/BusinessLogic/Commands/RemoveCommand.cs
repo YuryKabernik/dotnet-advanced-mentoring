@@ -1,6 +1,5 @@
 ﻿using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Interfaces;
-using CartingService.Domain.Etities;
 using CartingService.Domain.Interfaces.Entities;
 using CartingService.Domain.Interfaces.Ports;
 
@@ -30,7 +29,7 @@ public class RemoveCommand : ICommandHandler<RemoveRequest>
         await this.cartRepository.SaveChanges();
     }
 
-    private async Task<Cart> GetCart(Guid guid)
+    private async Task<ICartEntity> GetCart(Guid guid)
     {
         return await this.cartRepository.GetCart(guid)
             ?? throw new CommandFailedException($"Cart <{guid}> lookup failed.");

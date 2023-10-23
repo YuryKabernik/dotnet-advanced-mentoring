@@ -1,11 +1,10 @@
 ﻿using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Interfaces;
-using CartingService.Domain.Etities;
 using CartingService.Domain.Interfaces.Entities;
 using CartingService.Domain.Interfaces.Ports;
 using CartingService.Domain.ValueObjects;
 
-namespace CartingService.BusinessLogic;
+namespace CartingService.BusinessLogic.Queries;
 
 public record ItemsRequest(Guid CartId);
 
@@ -25,9 +24,15 @@ public class AllItemsQuery : IQueryHandler<ItemsRequest, IEnumerable<Item>>
         return cart.List();
     }
 
-    private async Task<Cart> GetCart(Guid guid)
+    private async Task<ICartEntity> GetCart(Guid guid)
     {
-        return await this.cartRepository.GetCart(guid)
-            ?? throw new QueryFailedException($"Cart <{guid}> lookup failed.");
+        if (guid.Equals(Guid.Empty))
+        {
+            throw new ArgumentException("Empty Guid is not allowed to lookup the cart.");
+        }
+
+        var cart = await this.cartRepository.GetCart(guid);
+
+        return cart ?? throw new QueryFailedException($"Cart <{guid}> lookup failed.");
     }
 }

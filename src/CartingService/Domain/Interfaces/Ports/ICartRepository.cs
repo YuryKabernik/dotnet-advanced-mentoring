@@ -1,9 +1,9 @@
-﻿using CartingService.Domain.Etities;
+﻿using CartingService.Domain.Interfaces.Entities;
 
 namespace CartingService.Domain.Interfaces.Ports;
 
 public interface ICartRepository
 {
-    Task<Cart> GetCart(Guid guid);
+    Task<ICartEntity> GetCart(Guid guid);
     Task SaveChanges();
 }

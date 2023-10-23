@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain.UnitTests", "..\..\tests\Domain\CartingService.Domain.UnitTests.csproj", "{F65BB563-68EC-4A53-A51F-5A44E9211ACD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.BusinessLogic.UnitTests", "..\..\tests\BusinessLogic\CartingService.BusinessLogic.UnitTests.csproj", "{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F65BB563-68EC-4A53-A51F-5A44E9211ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
