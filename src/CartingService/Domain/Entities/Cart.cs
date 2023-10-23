@@ -1,3 +1,4 @@
+using System.Buffers;
 using CartingService.Domain.Interfaces.Entities;
 using CartingService.Domain.Validation;
 using CartingService.Domain.ValueObjects;
@@ -7,7 +8,7 @@ namespace CartingService.Domain.Etities
     public class Cart : ICartEntity
     {
         public Guid Guid { get; set; }
-        public IDictionary<int, Item> Items { get; set; } = new Dictionary<int, Item>();
+        public IDictionary<int, Item> Items { get; set; }
 
         public Item? Get(int itemId)
         {
@@ -16,37 +17,36 @@ namespace CartingService.Domain.Etities
             return item;
         }
 
-        public void Add(Item item)
+        public bool Add(Item item)
         {
             ValidateItem(item);
 
-            bool successfullyAdded = this.Items.TryAdd(item.Id, item);
-            if (!successfullyAdded)
-            {
-                this.Items[item.Id].Quantity = item.Quantity;
-            }
+            return this.Items.TryAdd(item.Id, item);
         }
 
-        public void Remove(Item item)
+        public bool Remove(int itemId)
         {
-            ValidateItem(item);
-            this.Items.Remove(item.Id);
+            return this.Items.Remove(itemId);
+        }
+
+        public IReadOnlyCollection<Item> List()
+        {
+            if (this.Items is null)
+            {
+                return ArrayPool<Item>.Shared.Rent(0);
+            }
+
+            return Items.Values.ToList();
         }
 
         private static void ValidateItem(Item item)
         {
-            ValidationResult result = item.Validate();
-            if (result.IsValid is not true)
-            {
-                throw new ArgumentException(
-                    $"Invalid {result.PropertyName} property of the item."
-                );
-            }
-        }
+            ValidationResult r = item.Validate();
 
-        public IReadOnlyList<Item> List()
-        {
-            return Items.Select(i => i.Value).ToList();
+            if (!r.IsValid)
+            {
+                throw new ArgumentException($"Invalid {r.PropertyName} property of the item.");
+            }
         }
     }
 }
