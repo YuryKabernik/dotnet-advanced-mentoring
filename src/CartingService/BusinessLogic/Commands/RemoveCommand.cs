@@ -7,10 +7,8 @@ namespace CartingService.BusinessLogic.Commands;
 
 public record RemoveRequest(Guid CartId, int ItemId);
 
-public class RemoveCommand : ICommandHandler<RemoveRequest>
+public class RemoveCommand : BaseCartOperation, ICommandHandler<RemoveRequest>
 {
-    private ICartRepository cartRepository;
-
     public RemoveCommand(ICartRepository cartRepository)
     {
         this.cartRepository = cartRepository;
@@ -26,12 +24,6 @@ public class RemoveCommand : ICommandHandler<RemoveRequest>
             throw new CommandFailedException($"Item <{request.ItemId}> deletion failed.");
         }
 
-        await this.cartRepository.SaveChanges();
-    }
-
-    private async Task<ICartEntity> GetCart(Guid guid)
-    {
-        return await this.cartRepository.GetCart(guid)
-            ?? throw new CommandFailedException($"Cart <{guid}> lookup failed.");
+        await this.cartRepository.SaveChanges(cancellationToken);
     }
 }

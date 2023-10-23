@@ -10,9 +10,8 @@ namespace CartingService.BusinessLogic.Commands;
 public record NewItem(int Id, int Quantity);
 public record AddRequest(Guid CartId, NewItem Item);
 
-public class AddCommand : ICommandHandler<AddRequest>
+public class AddCommand : BaseCartOperation, ICommandHandler<AddRequest>
 {
-    private ICartRepository cartRepository;
     private ICatalogService catalogService;
 
     public AddCommand(ICartRepository cartRepository, ICatalogService catalogService)
@@ -30,22 +29,16 @@ public class AddCommand : ICommandHandler<AddRequest>
 
         if (!isAdded)
         {
-            selectedItem = cart.Get(selectedItem.Id)!;
-            this.UpdateQuantity(selectedItem, request);
+            this.UpdateQuantity(cart, selectedItem, request.Item.Quantity);
         }
 
-        await this.cartRepository.SaveChanges();
+        await this.cartRepository.SaveChanges(cancellationToken);
     }
 
-    private void UpdateQuantity(Item selectedItem, AddRequest request)
+    private void UpdateQuantity(ICartEntity cart, Item selectedItem, int itemQuantity)
     {
-        selectedItem.Quantity = request.Item.Quantity;
-    }
-
-    private async Task<ICartEntity> GetCart(Guid guid)
-    {
-        return await this.cartRepository.GetCart(guid)
-            ?? throw new CommandFailedException($"Cart <{guid}> lookup failed.");
+        selectedItem = cart.Get(selectedItem.Id)!;
+        selectedItem.Quantity = itemQuantity;
     }
 
     private async Task<Item> GetSelectedItem(NewItem newItem)

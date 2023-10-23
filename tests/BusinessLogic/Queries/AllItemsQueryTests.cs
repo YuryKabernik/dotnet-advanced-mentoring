@@ -9,7 +9,7 @@ using NSubstitute.ReceivedExtensions;
 
 namespace CartingService.BusinessLogic.UnitTests;
 
-public class AllItemsQueryTests //: ICartRepository, ICartEntity
+public class AllItemsQueryTests
 {
     private AllItemsQuery query;
     private ICartRepository cartRepositoryMock;
@@ -27,29 +27,29 @@ public class AllItemsQueryTests //: ICartRepository, ICartEntity
     {
         var guid = Guid.Empty;
         var expectedErrorMessage = $"Empty Guid is not allowed to lookup the cart.";
-        var command = new ItemsRequest(guid);
+        var request = new ItemsRequest(guid);
 
-        var task = query.Execute(command, CancellationToken.None);
+        var task = query.Execute(request, CancellationToken.None);
 
         Assert.ThrowsAsync<ArgumentException>(() => task);
         Assert.Equal(expectedErrorMessage, task.Exception?.InnerException?.Message);
     }
 
     [Fact]
-    public void Execute_OnNotExistingCart_ThrowsQueryException()
+    public void Execute_OnNotExistingCart_ThrowsCartLookupException()
     {
         // Given
         var guid = Guid.NewGuid();
         var expectedErrorMessage = $"Cart <{guid}> lookup failed.";
-        var command = new ItemsRequest(guid);
+        var request = new ItemsRequest(guid);
 
         this.cartRepositoryMock.GetCart(guid).ReturnsNull();
 
         // When
-        var task = query.Execute(command, CancellationToken.None);
+        var task = query.Execute(request, CancellationToken.None);
 
         // Then
-        Assert.ThrowsAsync<QueryFailedException>(() => task);
+        Assert.ThrowsAsync<CartLookupException>(() => task);
         Assert.Equal(expectedErrorMessage, task.Exception?.InnerException?.Message);
     }
 
@@ -58,14 +58,14 @@ public class AllItemsQueryTests //: ICartRepository, ICartEntity
     {
         // Given
         var guid = Guid.NewGuid();
-        var command = new ItemsRequest(guid);
+        var request = new ItemsRequest(guid);
         var expectedItems = new List<Item>();
 
         this.cartMock.List().Returns(expectedItems);
         this.cartRepositoryMock.GetCart(guid).Returns(cartMock);
 
         // When
-        var result = await query.Execute(command, CancellationToken.None);
+        var result = await query.Execute(request, CancellationToken.None);
 
         // Then
         Assert.Equal(expectedItems, result);

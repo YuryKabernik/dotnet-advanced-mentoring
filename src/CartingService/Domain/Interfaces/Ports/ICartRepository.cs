@@ -5,5 +5,5 @@ namespace CartingService.Domain.Interfaces.Ports;
 public interface ICartRepository
 {
     Task<ICartEntity> GetCart(Guid guid);
-    Task SaveChanges();
+    Task SaveChanges(CancellationToken token);
 }
