@@ -26,8 +26,13 @@ public class AddCommand : ICommandHandler<AddRequest>
         ICartEntity? cart = await this.GetCart(request.CartId);
         Item? selectedItem = await this.GetSelectedItem(request.Item);
 
-        this.UpdateQuantity(selectedItem, request);
-        cart.Add(selectedItem);
+        bool isAdded = cart.Add(selectedItem);
+
+        if (!isAdded)
+        {
+            selectedItem = cart.Get(selectedItem.Id)!;
+            this.UpdateQuantity(selectedItem, request);
+        }
 
         await this.cartRepository.SaveChanges();
     }

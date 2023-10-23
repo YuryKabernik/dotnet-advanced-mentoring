@@ -1,8 +1,8 @@
 ﻿using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Interfaces;
 using CartingService.Domain.Etities;
+using CartingService.Domain.Interfaces.Entities;
 using CartingService.Domain.Interfaces.Ports;
-using CartingService.Domain.ValueObjects;
 
 namespace CartingService.BusinessLogic.Commands;
 
@@ -19,11 +19,13 @@ public class RemoveCommand : ICommandHandler<RemoveRequest>
 
     public async Task Execute(RemoveRequest request, CancellationToken cancellationToken)
     {
-        Cart cart = await this.GetCart(request.CartId);
-        Item? item = cart.Get(request.ItemId)
-            ?? throw new CommandFailedException($"Item <{request.ItemId}> lookup failed.");
+        ICartEntity cart = await this.GetCart(request.CartId);
+        bool isRemoved = cart.Remove(request.ItemId);
 
-        cart.Remove(item);
+        if (!isRemoved)
+        {
+            throw new CommandFailedException($"Item <{request.ItemId}> deletion failed.");
+        }
 
         await this.cartRepository.SaveChanges();
     }

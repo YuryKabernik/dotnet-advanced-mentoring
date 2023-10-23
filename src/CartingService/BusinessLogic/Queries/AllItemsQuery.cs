@@ -1,6 +1,7 @@
 ﻿using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Interfaces;
 using CartingService.Domain.Etities;
+using CartingService.Domain.Interfaces.Entities;
 using CartingService.Domain.Interfaces.Ports;
 using CartingService.Domain.ValueObjects;
 
@@ -19,7 +20,7 @@ public class AllItemsQuery : IQueryHandler<ItemsRequest, IEnumerable<Item>>
 
     public async Task<IEnumerable<Item>> Execute(ItemsRequest request, CancellationToken cancellationToken)
     {
-        Cart cart = await this.GetCart(request.CartId);
+        ICartEntity cart = await this.GetCart(request.CartId);
 
         return cart.List();
     }
