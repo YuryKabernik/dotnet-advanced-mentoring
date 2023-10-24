@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.DataAccess",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain", "Domain\CartingService.Domain.csproj", "{75787BC2-C45D-475A-B0AA-4802F58642A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain.UnitTests", "..\..\tests\Domain\CartingService.Domain.UnitTests.csproj", "{F65BB563-68EC-4A53-A51F-5A44E9211ACD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.Domain.UnitTests", "..\..\tests\UnitTests\Domain\CartingService.Domain.UnitTests.csproj", "{F65BB563-68EC-4A53-A51F-5A44E9211ACD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.BusinessLogic.UnitTests", "..\..\tests\BusinessLogic\CartingService.BusinessLogic.UnitTests.csproj", "{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartingService.BusinessLogic.UnitTests", "..\..\tests\UnitTests\BusinessLogic\CartingService.BusinessLogic.UnitTests.csproj", "{B03C7CEB-11AC-4158-802F-451FFAFFA7B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
