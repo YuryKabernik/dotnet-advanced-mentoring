@@ -1,6 +1,6 @@
-﻿using CartingService.Domain.ValueObjects;
+﻿using CartingService.DataAccess.ValueObjects;
 
-namespace CartingService.Domain.Interfaces.Entities;
+namespace CartingService.DataAccess.Interfaces;
 
 public interface ICartEntity
 {

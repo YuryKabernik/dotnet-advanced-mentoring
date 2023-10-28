@@ -1,9 +1,9 @@
 ﻿using CartingService.BusinessLogic.Exceptions;
-using CartingService.BusinessLogic.Interfaces;
+using CartingService.BusinessLogic.Interfaces.Handlers;
+using CartingService.BusinessLogic.Interfaces.Ports;
 using CartingService.BusinessLogic.Interfaces.Services;
-using CartingService.Domain.Interfaces.Entities;
-using CartingService.Domain.Interfaces.Ports;
-using CartingService.Domain.ValueObjects;
+using CartingService.DataAccess.Interfaces;
+using CartingService.DataAccess.ValueObjects;
 
 namespace CartingService.BusinessLogic.Commands;
 

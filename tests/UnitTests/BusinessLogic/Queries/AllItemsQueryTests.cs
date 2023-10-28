@@ -1,9 +1,9 @@
 ﻿using NSubstitute;
 using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Queries;
-using CartingService.Domain.Interfaces.Entities;
-using CartingService.Domain.Interfaces.Ports;
-using CartingService.Domain.ValueObjects;
+using CartingService.BusinessLogic.Interfaces.Ports;
+using CartingService.DataAccess.Interfaces;
+using CartingService.DataAccess.ValueObjects;
 using NSubstitute.ReturnsExtensions;
 using NSubstitute.ReceivedExtensions;
 

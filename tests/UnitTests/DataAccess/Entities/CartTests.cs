@@ -1,7 +1,7 @@
-﻿using CartingService.Domain.Etities;
-using CartingService.Domain.ValueObjects;
+﻿using CartingService.DataAccess.Etities;
+using CartingService.DataAccess.ValueObjects;
 
-namespace CartingService.Domain.UnitTests.Entities;
+namespace CartingService.DataAccess.UnitTests.Entities;
 
 public class CartTests : Cart
 {
@@ -35,14 +35,6 @@ public class CartTests : Cart
         var result = this.Get(unlistedItem.Id);
 
         Assert.Null(result);
-    }
-
-    [Fact]
-    public void Add_ItemIsInvalid_ArgumentException()
-    {
-        Assert.Throws<ArgumentException>(
-            () => this.Add(invalidItem)
-        );
     }
 
     [Fact]

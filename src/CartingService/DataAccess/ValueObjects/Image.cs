@@ -1,4 +1,4 @@
-namespace CartingService.Domain.ValueObjects;
+namespace CartingService.DataAccess.ValueObjects;
 
 public class Image
 {

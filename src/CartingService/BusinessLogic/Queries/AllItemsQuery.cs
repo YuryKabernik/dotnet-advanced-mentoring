@@ -1,7 +1,7 @@
-﻿using CartingService.BusinessLogic.Interfaces;
-using CartingService.Domain.Interfaces.Entities;
-using CartingService.Domain.Interfaces.Ports;
-using CartingService.Domain.ValueObjects;
+﻿using CartingService.BusinessLogic.Interfaces.Handlers;
+using CartingService.BusinessLogic.Interfaces.Ports;
+using CartingService.DataAccess.Interfaces;
+using CartingService.DataAccess.ValueObjects;
 
 namespace CartingService.BusinessLogic.Queries;
 

@@ -1,4 +1,6 @@
-﻿namespace CartingService.Domain.Validation;
+﻿using CartingService.DataAccess.ValueObjects;
+
+namespace CartingService.BusinessLogic.Validation;
 
 public struct ValidationResult
 {
@@ -13,4 +15,16 @@ public struct ValidationResult
 
     public bool IsValid { get; }
     public string? PropertyName { get; }
+
+
+    public static ValidationResult Validate(Item item)
+    {
+        if (item.Quantity < 1)
+            return ValidationResult.FailedFrom(nameof(item.Quantity));
+
+        if (item.Price < 0)
+            return ValidationResult.FailedFrom(nameof(item.Price));
+
+        return ValidationResult.Success;
+    }
 }

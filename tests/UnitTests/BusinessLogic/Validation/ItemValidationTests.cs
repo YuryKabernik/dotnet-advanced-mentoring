@@ -1,6 +1,7 @@
-using CartingService.Domain.ValueObjects;
+using CartingService.BusinessLogic.Validation;
+using CartingService.DataAccess.ValueObjects;
 
-namespace CartingService.Domain.UnitTests.ValueObjects;
+namespace CartingService.BusinessLogic.UnitTests.Validation;
 
 public class ItemTests : Item
 {
@@ -19,7 +20,7 @@ public class ItemTests : Item
     {
         this.Quantity = quantity;
  
-        var result = this.Validate();
+        var result = ValidationResult.Validate(this);
     
         Assert.False(result.IsValid);
         Assert.Equal(nameof(Quantity), result.PropertyName);
@@ -31,7 +32,7 @@ public class ItemTests : Item
     {
         this.Price = price;
      
-        var result = this.Validate();
+        var result = ValidationResult.Validate(this);
     
         Assert.False(result.IsValid);
         Assert.Equal(nameof(Price), result.PropertyName);
@@ -45,7 +46,7 @@ public class ItemTests : Item
         this.Quantity = quantity;
         this.Price = price;
 
-        var result = this.Validate();
+        var result = ValidationResult.Validate(this);
 
         Assert.True(result.IsValid);
         Assert.Null(result.PropertyName);

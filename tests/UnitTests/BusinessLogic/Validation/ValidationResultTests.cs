@@ -1,6 +1,6 @@
-﻿using CartingService.Domain.Validation;
+﻿using CartingService.BusinessLogic.Validation;
 
-namespace CartingService.Domain.UnitTests.Validation;
+namespace CartingService.BusinessLogic.UnitTests.Validation;
 
 public class ValidationResultTests
 {

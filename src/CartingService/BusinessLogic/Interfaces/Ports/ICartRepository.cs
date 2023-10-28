@@ -1,6 +1,6 @@
-﻿using CartingService.Domain.Interfaces.Entities;
+﻿using CartingService.DataAccess.Interfaces;
 
-namespace CartingService.Domain.Interfaces.Ports;
+namespace CartingService.BusinessLogic.Interfaces.Ports;
 
 public interface ICartRepository
 {

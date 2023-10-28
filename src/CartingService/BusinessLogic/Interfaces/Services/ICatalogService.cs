@@ -1,4 +1,4 @@
-﻿using CartingService.Domain.ValueObjects;
+using CartingService.DataAccess.ValueObjects;
 
 namespace CartingService.BusinessLogic.Interfaces.Services;
 

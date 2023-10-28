@@ -1,6 +1,4 @@
-﻿using CartingService.Domain.Validation;
-
-namespace CartingService.Domain.ValueObjects;
+﻿namespace CartingService.DataAccess.ValueObjects;
 
 public class Item
 {
@@ -17,15 +15,4 @@ public class Item
     /// Quantity of items in the cart.
     /// </summary>
     public int Quantity { get; set; }
-
-    public ValidationResult Validate()
-    {
-        if (this.Quantity < 1)
-            return ValidationResult.FailedFrom(nameof(Quantity));
-
-        if (this.Price < 0)
-            return ValidationResult.FailedFrom(nameof(Price));
-
-        return ValidationResult.Success;
-    }
 }
