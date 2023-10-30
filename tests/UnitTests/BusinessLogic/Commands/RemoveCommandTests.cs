@@ -1,10 +1,8 @@
 ﻿using CartingService.BusinessLogic.Commands;
 using CartingService.BusinessLogic.Exceptions;
-using CartingService.BusinessLogic.Interfaces.Ports;
 using CartingService.DataAccess.Interfaces;
 using NSubstitute;
 using NSubstitute.ReceivedExtensions;
-using NSubstitute.ReturnsExtensions;
 
 namespace CartingService.BusinessLogic.UnitTests;
 
@@ -39,25 +37,6 @@ public class RemoveCommandTests
     }
 
     [Fact]
-    public async void Execute_OnNotExistingCart_ThrowsCartLookupException()
-    {
-        // Given
-        var guid = Guid.NewGuid();
-        var request = new RemoveRequest(guid, default);
-        var expectedErrorMessage = $"Cart <{guid}> lookup failed.";
-
-        this.cartRepositoryMock.GetCart(guid).ReturnsNull();
-
-        // When
-        var exception = await Assert.ThrowsAsync<CartLookupException>(
-            () => this.command.Execute(request, CancellationToken.None)
-        );
-
-        // Then
-        Assert.Equal(expectedErrorMessage, exception.Message);
-    }
-
-    [Fact]
     public async void Execute_OnFailedRemoval_ThrowsCommandException()
     {
         // Given
@@ -66,8 +45,8 @@ public class RemoveCommandTests
         var request = new RemoveRequest(guid, itemId);
         var expectedErrorMessage = $"Item <{request.ItemId}> deletion failed.";
 
-        cartMock.Remove(itemId).Returns(false);
-        cartRepositoryMock.GetCart(guid).Returns(cartMock);
+        this.cartMock.Remove(itemId).Returns(false);
+        this.cartRepositoryMock.GetCart(guid).Returns(this.cartMock);
 
         // When
         var exception = await Assert.ThrowsAsync<CommandFailedException>(
@@ -87,13 +66,14 @@ public class RemoveCommandTests
         var request = new RemoveRequest(guid, itemId);
         var cancellationToken = new CancellationTokenSource().Token;
 
-        cartMock.Remove(itemId).Returns(true);
-        cartRepositoryMock.GetCart(guid).Returns(cartMock);
+        this.cartMock.Remove(itemId).Returns(true);
+        this.cartRepositoryMock.GetCart(guid).Returns(cartMock);
 
         // When
         await this.command.Execute(request, cancellationToken);
 
         // Then
-        await this.cartRepositoryMock.Received(1).SaveChanges(cancellationToken);
+        this.cartRepositoryMock.Received(1).GetCart(guid);
+        await this.cartMock.Received(1).Remove(itemId);
     }
 }

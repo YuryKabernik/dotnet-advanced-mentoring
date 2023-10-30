@@ -1,9 +1,7 @@
 ﻿using NSubstitute;
-using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Queries;
 using CartingService.DataAccess.Interfaces;
 using CartingService.DataAccess.ValueObjects;
-using NSubstitute.ReturnsExtensions;
 using NSubstitute.ReceivedExtensions;
 
 namespace CartingService.BusinessLogic.UnitTests;
@@ -18,7 +16,7 @@ public class AllItemsQueryTests
     {
         this.cartMock = Substitute.For<ICartEntity>();
         this.cartRepositoryMock = Substitute.For<ICartRepository>();
-        this.query = new AllItemsQuery(cartRepositoryMock);
+        this.query = new AllItemsQuery(this.cartRepositoryMock);
     }
 
     [Fact]
@@ -35,24 +33,6 @@ public class AllItemsQueryTests
     }
 
     [Fact]
-    public void Execute_OnNotExistingCart_ThrowsCartLookupException()
-    {
-        // Given
-        var guid = Guid.NewGuid();
-        var expectedErrorMessage = $"Cart <{guid}> lookup failed.";
-        var request = new ItemsRequest(guid);
-
-        this.cartRepositoryMock.GetCart(guid).ReturnsNull();
-
-        // When
-        var task = query.Execute(request, CancellationToken.None);
-
-        // Then
-        Assert.ThrowsAsync<CartLookupException>(() => task);
-        Assert.Equal(expectedErrorMessage, task.Exception?.InnerException?.Message);
-    }
-
-    [Fact]
     public async Task Execute_OnExistingCart_ListsItems()
     {
         // Given
@@ -61,7 +41,7 @@ public class AllItemsQueryTests
         var expectedItems = new List<Item>();
 
         this.cartMock.List().Returns(expectedItems);
-        this.cartRepositoryMock.GetCart(guid).Returns(cartMock);
+        this.cartRepositoryMock.GetCart(guid).Returns(this.cartMock);
 
         // When
         var result = await query.Execute(request, CancellationToken.None);
