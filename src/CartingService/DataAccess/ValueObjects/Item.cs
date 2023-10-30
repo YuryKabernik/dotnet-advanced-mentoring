@@ -1,9 +1,9 @@
 ﻿namespace CartingService.DataAccess.ValueObjects;
 
-public class Item
+public class Item 
 {
     /// <summary>
-    /// Iunique identifier of the item in external system.
+    /// Unique identifier of the item in external system.
     /// </summary>
     required public int Id { get; set; }
 

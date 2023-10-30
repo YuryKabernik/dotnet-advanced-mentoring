@@ -4,8 +4,9 @@ namespace CartingService.DataAccess.Interfaces;
 
 public interface ICartEntity
 {
-    Item? Get(int itemId);
-    bool Add(Item item);
-    bool Remove(int itemId);
-    IReadOnlyCollection<Item> List();
+    Task<Item?> Get(int itemId);
+    Task<bool> Add(Item item);
+    Task<bool> Remove(int itemId);
+    Task<IEnumerable<Item>> List();
+    Task Update(Item selectedItem);
 }

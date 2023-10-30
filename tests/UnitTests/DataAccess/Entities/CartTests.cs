@@ -1,105 +1,163 @@
 ﻿using CartingService.DataAccess.Etities;
 using CartingService.DataAccess.ValueObjects;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 
 namespace CartingService.DataAccess.UnitTests.Entities;
 
 public class CartTests : Cart
 {
-    private readonly Item invalidItem = new() { Id = default, Name = string.Empty, Price = default, Quantity = default };
     private readonly Item listedItem = new() { Id = 100, Name = "Title", Price = 10, Quantity = 10 };
     private readonly Item unlistedItem = new() { Id = 101, Name = string.Empty, Price = default, Quantity = 1 };
 
-    public CartTests()
+    private readonly IMongoCollection<Item> collectionMock;
+    private readonly IAsyncCursor<Item> itemCursor;
+    private readonly IAsyncCursor<BsonDocument> bsonCursor;
+
+    public CartTests() : base(default, default!)
     {
+        this.itemCursor = Substitute.For<IAsyncCursor<Item>>();
+        this.bsonCursor = Substitute.For<IAsyncCursor<BsonDocument>>();
+        this.collectionMock = Substitute.For<IMongoCollection<Item>>();
+
         this.Guid = new Guid();
-        this.Items = new Dictionary<int, Item>() {
-            { listedItem.Id, listedItem }
-        };
+        this.Items = this.collectionMock;
     }
 
     [Fact]
-    public void Get_ItemInList_ReturnsItem()
+    public async Task Get_ItemInList_ReturnsItem()
     {
-        var result = this.Get(listedItem.Id);
+        var filterResult = new List<Item> { this.listedItem };
+        var enumerator = filterResult.GetEnumerator();
+
+        this.collectionMock
+            .FindAsync<Item>(FilterDefinition<Item>.Empty, default, default)
+            .ReturnsForAnyArgs(this.itemCursor);
+
+        this.itemCursor.Current.Returns(filterResult);
+        this.itemCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(_ => enumerator.MoveNext());
+
+        var result = await this.Get(this.listedItem.Id);
 
         Assert.NotNull(result);
-        Assert.Equal(listedItem.Id, result.Id);
-        Assert.Equal(listedItem.Name, result.Name);
-        Assert.Equal(listedItem.Price, result.Price);
-        Assert.Equal(listedItem.Quantity, result.Quantity);
+        Assert.Equal(this.listedItem.Id, result.Id);
+        Assert.Equal(this.listedItem.Name, result.Name);
+        Assert.Equal(this.listedItem.Price, result.Price);
+        Assert.Equal(this.listedItem.Quantity, result.Quantity);
     }
 
     [Fact]
-    public void Get_ItemNotInList_ReturnsNull()
+    public async Task Get_ItemNotInList_ReturnsNull()
     {
-        var result = this.Get(unlistedItem.Id);
+        var filterResult = Enumerable.Empty<Item>();
+
+        this.collectionMock
+            .FindAsync<Item>(FilterDefinition<Item>.Empty, default, default)
+            .ReturnsForAnyArgs(this.itemCursor);
+        this.itemCursor.Current.Returns(filterResult);
+        this.itemCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(false);
+
+        var result = await this.Get(this.unlistedItem.Id);
 
         Assert.Null(result);
     }
 
     [Fact]
-    public void Add_ItemIsInList_ReturnsFalse()
+    public async Task Add_ItemIsInList_ReturnsFalse()
     {
-        bool isAdded = this.Add(listedItem);
+        var filterResult = new List<BsonDocument> { new() };
+
+        this.collectionMock
+            .FindAsync<BsonDocument>(FilterDefinition<Item>.Empty, default, default)
+            .ReturnsForAnyArgs(this.bsonCursor);
+        this.bsonCursor.Current.Returns(filterResult);
+        this.bsonCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(true);
+
+        bool isAdded = await this.Add(this.listedItem);
 
         Assert.False(isAdded);
-        Assert.Single(this.Items);
-        Assert.DoesNotContain(unlistedItem.Id, Items.Keys);
     }
 
     [Fact]
-    public void Add_ItemIsNotInList_AddsItem()
+    public async Task Add_ItemIsNotInList_AddsItem()
     {
-        bool isAdded = this.Add(unlistedItem);
+        var filterResult = Enumerable.Empty<BsonDocument>();
+
+        this.collectionMock
+            .FindAsync<BsonDocument>(FilterDefinition<Item>.Empty, default, default)
+            .ReturnsForAnyArgs(this.bsonCursor);
+        this.bsonCursor.Current.Returns(filterResult);
+        this.bsonCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(_ => Task.FromResult(false));
+
+        bool isAdded = await this.Add(this.unlistedItem);
 
         Assert.True(isAdded);
-        Assert.True(this.Items.Count == 2);
-        Assert.Contains(unlistedItem.Id, Items.Keys);
+        await this.collectionMock.Received(1).InsertOneAsync(this.unlistedItem);
     }
 
     [Fact]
-    public void Remove_ItemIsNotInList_ReturnsFalse()
+    public async Task Remove_ItemIsNotInList_ReturnsFalse()
     {
-        bool isRemoved = this.Remove(unlistedItem.Id);
+        this.collectionMock
+            .FindOneAndDeleteAsync(FilterDefinition<Item>.Empty, Arg.Any<FindOneAndDeleteOptions<Item, Item>>(), CancellationToken.None)
+            .ReturnsNullForAnyArgs();
+
+        bool isRemoved = await this.Remove(this.unlistedItem.Id);
 
         Assert.False(isRemoved);
-        Assert.Single(this.Items);
-        Assert.Contains(listedItem.Id, Items.Keys);
     }
 
     [Fact]
-    public void Remove_ItemIsInList_RemovesItem()
+    public async Task Remove_ItemIsInList_RemovesItem()
     {
-        bool isRemoved = this.Remove(listedItem.Id);
+        this.collectionMock
+            .FindOneAndDeleteAsync(FilterDefinition<Item>.Empty, Arg.Any<FindOneAndDeleteOptions<Item, Item>>(), CancellationToken.None)
+            .ReturnsForAnyArgs(this.listedItem);
+
+        bool isRemoved = await this.Remove(this.listedItem.Id);
 
         Assert.True(isRemoved);
-        Assert.Empty(this.Items);
     }
 
     [Fact]
-    public void List_NullableCollection_ReturnsEmptyList()
+    public async Task List_IsEmpty_ReturnsEmptyList()
     {
-        this.Items = null;
+        var filterResult = Enumerable.Empty<Item>();
 
-        var resultList = this.List();
+        this.collectionMock
+            .FindAsync<Item>(FilterDefinition<Item>.Empty)
+            .ReturnsForAnyArgs(this.itemCursor);
+
+        this.itemCursor.Current.Returns(filterResult);
+        this.itemCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(false);
+
+        var resultList = await this.List();
 
         Assert.Empty(resultList);
     }
 
     [Fact]
-    public void List_IsEmpty_ReturnsEmptyList()
+    public async Task List_WithItems_ReturnsList()
     {
-        this.Items = new Dictionary<int, Item>();
+        var filterResult = new List<Item> { this.listedItem };
+        var enumerator = filterResult.GetEnumerator();
 
-        var resultList = this.List();
+        this.collectionMock
+            .FindAsync<Item>(FilterDefinition<Item>.Empty, default, default)
+            .ReturnsForAnyArgs(this.itemCursor);
 
-        Assert.Empty(resultList);
-    }
+        this.itemCursor.Current.Returns(filterResult);
+        this.itemCursor.MoveNextAsync(Arg.Any<CancellationToken>())
+            .ReturnsForAnyArgs(_ => enumerator.MoveNext());
 
-    [Fact]
-    public void List_WithItems_ReturnsList()
-    {
-        var resultList = this.List();
+        var resultList = await this.List();
 
         Assert.Single(resultList);
     }

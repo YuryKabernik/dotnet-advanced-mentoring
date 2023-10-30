@@ -1,38 +1,59 @@
-using System.Buffers;
 using CartingService.DataAccess.Interfaces;
 using CartingService.DataAccess.ValueObjects;
+using MongoDB.Driver;
 
 namespace CartingService.DataAccess.Etities;
 
 public class Cart : ICartEntity
 {
     public Guid Guid { get; set; }
-    public IDictionary<int, Item> Items { get; set; }
+    public IMongoCollection<Item> Items { get; set; }
 
-    public Item? Get(int itemId)
+    public Cart(Guid guid, IMongoCollection<Item> items)
     {
-        this.Items.TryGetValue(itemId, out Item? item);
-
-        return item;
+        this.Guid = guid;
+        this.Items = items;
     }
 
-    public bool Add(Item item)
+    public async Task<Item?> Get(int itemId)
     {
-        return this.Items.TryAdd(item.Id, item);
+        var filter = Builders<Item>.Filter.Eq(i => i.Id, itemId);
+        return await this.Items.Find(filter).FirstOrDefaultAsync();
     }
 
-    public bool Remove(int itemId)
+    public async Task<bool> Add(Item item)
     {
-        return this.Items.Remove(itemId);
-    }
+        var filter = Builders<Item>.Filter.Eq(i => i.Id, item.Id);
+        bool hasAnyMatch = await this.Items.Find(filter).AnyAsync();
+        bool canBeAdded = !hasAnyMatch;
 
-    public IReadOnlyCollection<Item> List()
-    {
-        if (this.Items is null)
+        if (canBeAdded)
         {
-            return ArrayPool<Item>.Shared.Rent(0);
+            await this.Items.InsertOneAsync(item);
         }
 
-        return Items.Values.ToList();
+        return canBeAdded;
+    }
+
+    public async Task<bool> Remove(int itemId)
+    {
+        var filter = Builders<Item>.Filter.Eq(i => i.Id, itemId);
+        var deletedItem = await this.Items.FindOneAndDeleteAsync(filter);
+
+        return deletedItem is not null;
+    }
+
+    public async Task<IEnumerable<Item>> List()
+    {
+        var findFluent = this.Items.Find(FilterDefinition<Item>.Empty);
+
+        return await findFluent.ToListAsync();
+    }
+
+    public async Task Update(Item item)
+    {
+        var filter = Builders<Item>.Filter.Eq(i => i.Id, item.Id);
+
+        await this.Items.FindOneAndReplaceAsync(filter, item);
     }
 }

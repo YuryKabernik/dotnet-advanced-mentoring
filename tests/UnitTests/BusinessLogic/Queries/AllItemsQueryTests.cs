@@ -1,7 +1,6 @@
 ﻿using NSubstitute;
 using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Queries;
-using CartingService.BusinessLogic.Interfaces.Ports;
 using CartingService.DataAccess.Interfaces;
 using CartingService.DataAccess.ValueObjects;
 using NSubstitute.ReturnsExtensions;
@@ -54,7 +53,7 @@ public class AllItemsQueryTests
     }
 
     [Fact]
-    public async void Execute_OnExistingCart_ListsItems()
+    public async Task Execute_OnExistingCart_ListsItems()
     {
         // Given
         var guid = Guid.NewGuid();
@@ -69,6 +68,6 @@ public class AllItemsQueryTests
 
         // Then
         Assert.Equal(expectedItems, result);
-        this.cartMock.Received(Quantity.Exactly(1)).List();
+        await this.cartMock.Received(Quantity.Exactly(1)).List();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CartingService.BusinessLogic.Interfaces.Handlers;
-using CartingService.BusinessLogic.Interfaces.Ports;
 using CartingService.DataAccess.Interfaces;
 using CartingService.DataAccess.ValueObjects;
 
@@ -16,8 +15,8 @@ public class AllItemsQuery : BaseCartOperation, IQueryHandler<ItemsRequest, IEnu
 
     public async Task<IEnumerable<Item>> Execute(ItemsRequest request, CancellationToken cancellationToken)
     {
-        ICartEntity cart = await this.GetCart(request.CartId);
+        ICartEntity cart = this.GetCart(request.CartId);
 
-        return cart.List();
+        return await cart.List();
     }
 }
