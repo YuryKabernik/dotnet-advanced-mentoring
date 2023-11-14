@@ -7,5 +7,5 @@ namespace CartingService.DataAccess.Entities;
 public class Cart : Entity
 {
     [BsonElement]
-    public ISet<Item> Items { get; set; } = null!;
+    public IDictionary<string, Item> Items { get; set; } = null!;
 }

@@ -1,22 +1,25 @@
-﻿using CartingService.BusinessLogic.Interfaces.Handlers;
-using CartingService.DataAccess.Interfaces;
+﻿using CartingService.Abstractions.Interfaces;
+using CartingService.BusinessLogic.Interfaces.Handlers;
+using CartingService.DataAccess.Entities;
 using CartingService.DataAccess.ValueObjects;
 
 namespace CartingService.BusinessLogic.Queries;
 
-public record ItemsRequest(Guid CartId);
+public record ItemsRequest(string CartId);
 
-public class AllItemsQuery : BaseCartOperation, IQueryHandler<ItemsRequest, IEnumerable<Item>>
+public class AllItemsQuery : IQueryHandler<ItemsRequest, IEnumerable<Item>>
 {
-    public AllItemsQuery(ICartRepository cartRepository)
+    private readonly IRepository<Cart> cartRepository;
+
+    public AllItemsQuery(IRepository<Cart> cartRepository)
     {
         this.cartRepository = cartRepository;
     }
 
     public async Task<IEnumerable<Item>> Execute(ItemsRequest request, CancellationToken cancellationToken)
     {
-        ICartEntity cart = this.GetCart(request.CartId);
+        Cart cart = await cartRepository.GetAsync(request.CartId);
 
-        return await cart.List();
+        return cart.Items.Values.ToList();
     }
 }

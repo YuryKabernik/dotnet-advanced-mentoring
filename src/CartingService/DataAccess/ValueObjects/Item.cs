@@ -2,7 +2,7 @@
 
 namespace CartingService.DataAccess.ValueObjects;
 
-public class Item 
+public class Item
 {
     /// <summary>
     /// Unique identifier of the item in external system.

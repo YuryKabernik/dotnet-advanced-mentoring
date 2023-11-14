@@ -1,19 +1,21 @@
-﻿using CartingService.BusinessLogic.Exceptions;
+﻿using CartingService.Abstractions.Interfaces;
+using CartingService.BusinessLogic.Exceptions;
 using CartingService.BusinessLogic.Interfaces.Handlers;
 using CartingService.BusinessLogic.Interfaces.Services;
-using CartingService.DataAccess.Interfaces;
+using CartingService.DataAccess.Entities;
 using CartingService.DataAccess.ValueObjects;
 
 namespace CartingService.BusinessLogic.Commands;
 
-public record NewItem(int Id, int Quantity);
-public record AddRequest(Guid CartId, NewItem Item);
+public record NewItem(string Id, int Quantity);
+public record AddRequest(string CartId, NewItem Item);
 
-public class AddCommand : BaseCartOperation, ICommandHandler<AddRequest>
+public class AddCommand : ICommandHandler<AddRequest>
 {
     private ICatalogService catalogService;
+    private readonly IRepository<Cart> cartRepository;
 
-    public AddCommand(ICartRepository cartRepository, ICatalogService catalogService)
+    public AddCommand(IRepository<Cart> cartRepository, ICatalogService catalogService)
     {
         this.cartRepository = cartRepository;
         this.catalogService = catalogService;
@@ -21,14 +23,14 @@ public class AddCommand : BaseCartOperation, ICommandHandler<AddRequest>
 
     public async Task Execute(AddRequest request, CancellationToken cancellationToken)
     {
-        ICartEntity? cart = this.GetCart(request.CartId);
-        Item? selectedItem = await this.GetSelectedItem(request.Item);
+        Cart cart = await this.cartRepository.GetAsync(request.CartId);
+        Item selectedItem = await this.GetSelectedItem(request.Item);
 
-        bool isAdded = await cart.Add(selectedItem);
+        bool isAdded = cart.Items.TryAdd(selectedItem.Id, selectedItem);
 
         if (!isAdded)
         {
-            await cart.Update(selectedItem);
+            await this.cartRepository.UpdateAsync(cart);
         }
     }
 
