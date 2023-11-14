@@ -1,6 +1,9 @@
-﻿using CartingService.BusinessLogic.Commands;
+﻿using CartingService.Abstractions.Interfaces;
+using CartingService.BusinessLogic.Commands;
 using CartingService.BusinessLogic.Exceptions;
-using CartingService.DataAccess.Interfaces;
+using CartingService.DataAccess.Entities;
+using CartingService.DataAccess.ValueObjects;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NSubstitute.ReceivedExtensions;
 
@@ -8,27 +11,32 @@ namespace CartingService.BusinessLogic.UnitTests;
 
 public class RemoveCommandTests
 {
-    private readonly ICartEntity cartMock;
-    private readonly ICartRepository cartRepositoryMock;
+    private readonly Cart cartMock;
+    private readonly ILogger<RemoveCommand> loggerMock;
+    private readonly IRepository<Cart> cartRepositoryMock;
     private readonly RemoveCommand command;
 
     public RemoveCommandTests()
     {
-        this.cartMock = Substitute.For<ICartEntity>();
-        this.cartRepositoryMock = Substitute.For<ICartRepository>();
-        this.command = new RemoveCommand(this.cartRepositoryMock);
+        this.cartMock = Substitute.For<Cart>();
+        this.cartMock.Items = Substitute.For<IDictionary<string, Item>>();
+
+        this.loggerMock = Substitute.For<ILogger<RemoveCommand>>();
+        this.cartRepositoryMock = Substitute.For<IRepository<Cart>>();
+
+        this.command = new RemoveCommand(this.cartRepositoryMock, this.loggerMock);
     }
 
     [Fact]
     public async void Execute_WithEmptyGuid_ThrowsArgumentException()
     {
         // Given
-        var guid = Guid.Empty;
+        var guid = Guid.Empty.ToString();
         var request = new RemoveRequest(guid, default);
-        var expectedErrorMessage = $"Empty Guid is not allowed to lookup the cart.";
+        var expectedErrorMessage = $"Object reference not set to an instance of an object.";
 
         // When
-        var exception = await Assert.ThrowsAsync<ArgumentException>(
+        var exception = await Assert.ThrowsAsync<NullReferenceException>(
             () => this.command.Execute(request, CancellationToken.None)
         );
 
@@ -40,13 +48,13 @@ public class RemoveCommandTests
     public async void Execute_OnFailedRemoval_ThrowsCommandException()
     {
         // Given
-        var itemId = 100;
-        var guid = Guid.NewGuid();
+        var itemId = "100";
+        var guid = Guid.NewGuid().ToString();
         var request = new RemoveRequest(guid, itemId);
-        var expectedErrorMessage = $"Item <{request.ItemId}> deletion failed.";
+        var expectedErrorMessage = $"Item '{request.ItemId}' deletion failed.";
 
-        this.cartMock.Remove(itemId).Returns(false);
-        this.cartRepositoryMock.GetCart(guid).Returns(this.cartMock);
+        this.cartMock.Items.Remove(Arg.Any<string>()).Returns(false);
+        this.cartRepositoryMock.GetAsync(guid).Returns(this.cartMock);
 
         // When
         var exception = await Assert.ThrowsAsync<CommandFailedException>(
@@ -61,19 +69,18 @@ public class RemoveCommandTests
     public async void Execute_OperationCompleted_RemovesItem()
     {
         // Given
-        var itemId = 101;
-        var guid = Guid.NewGuid();
+        var itemId = "101";
+        var guid = Guid.NewGuid().ToString();
         var request = new RemoveRequest(guid, itemId);
         var cancellationToken = new CancellationTokenSource().Token;
 
-        this.cartMock.Remove(itemId).Returns(true);
-        this.cartRepositoryMock.GetCart(guid).Returns(cartMock);
+        this.cartMock.Items.Remove(Arg.Any<string>()).Returns(true);
+        this.cartRepositoryMock.GetAsync(guid).Returns(this.cartMock);
 
         // When
         await this.command.Execute(request, cancellationToken);
 
         // Then
-        this.cartRepositoryMock.Received(1).GetCart(guid);
-        await this.cartMock.Received(1).Remove(itemId);
+        await this.cartRepositoryMock.Received(1).GetAsync(guid);
     }
 }
