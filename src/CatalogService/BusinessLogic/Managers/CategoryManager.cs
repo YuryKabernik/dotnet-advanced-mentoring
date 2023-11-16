@@ -1,5 +1,4 @@
 ﻿using CatalogService.BusinessLogic.Entities;
-using CatalogService.Contracts;
 using CatalogService.Contracts.Interfaces;
 
 namespace CatalogService.BusinessLogic.Managers;
@@ -15,11 +14,11 @@ public class CategoryManager : IManager<Category>
 
     public Task AddAsync(Category entity) => this.repository.Add(entity);
 
-    public Task DeleteAsync(int id) => this.repository.Delete(id);
+    public Task DeleteAsync(string id) => this.repository.Delete(id);
 
-    public Task<Category?> GetAsync(int id) => this.repository.Get(id);
+    public Task<Category?> GetAsync(string id) => this.repository.Get(id);
 
-    public Task<IEnumerable<Category>> ListAsync() => this.repository.List();
+    public Task<IEnumerable<Category>> GetAsync() => this.repository.Get();
 
-    public Task UpdateAsync(int id, Category newEntity) => this.repository.Update(id, newEntity);
+    public Task UpdateAsync(string id, Category newEntity) => this.repository.Update(id, newEntity);
 }
