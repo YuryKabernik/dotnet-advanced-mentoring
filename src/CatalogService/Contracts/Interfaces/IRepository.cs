@@ -1,10 +1,12 @@
-﻿namespace CatalogService.Contracts.Interfaces;
+﻿using System.Linq.Expressions;
 
-public interface IRepository<TSource>
+namespace CatalogService.Contracts.Interfaces;
+
+public interface IRepository<TSource> : IDisposable
 {
-    Task Add(TSource value);
-    Task Delete(string id);
-    Task<TSource?> Get(string id);
-    Task<IEnumerable<TSource>> Get();
-    Task Update(string id, TSource value);
+    Task Add(TSource entry);
+    Task Delete(TSource entry);
+    Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate);
+    Task<IEnumerable<TSource>> Get(Expression<Func<TSource, bool>> predicate, int? top = default);
+    Task Update(TSource entry);
 }

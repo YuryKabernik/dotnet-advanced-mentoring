@@ -3,21 +3,25 @@ using CatalogService.Contracts.Interfaces;
 
 namespace CatalogService.BusinessLogic.Managers;
 
-public class ItemManager : IManager<Item>
+public class ItemManager : BaseSourceManager<Item>
 {
-    private readonly IRepository<Item> repository;
+    public ItemManager(IRepository<Item> repository) : base(repository) { }
 
-    public ItemManager(IRepository<Item> repository)
+    public override async Task<Item?> GetAsync(string id) => await this.repository.GetFirst(i => i.Id == id);
+
+    public override async Task<IEnumerable<Item>> GetAsync() => await this.repository.Get(_ => true, 100);
+
+    public override async Task AddAsync(Item entity) => await this.repository.Add(entity);
+
+    public override async Task DeleteAsync(string id)
     {
-        this.repository = repository;
+        var item = await repository.GetFirst(i => i.Id == id);
+
+        if (item is not null)
+        {
+            await this.repository.Delete(item);
+        }
     }
-    public Task AddAsync(Item entity) => this.repository.Add(entity);
 
-    public Task DeleteAsync(string id) => this.repository.Delete(id);
-
-    public Task<Item?> GetAsync(string id) => this.repository.Get(id);
-
-    public Task<IEnumerable<Item>> GetAsync() => this.repository.Get();
-
-    public Task UpdateAsync(string id, Item newEntity) => this.repository.Update(id, newEntity);
+    public override async Task UpdateAsync(Item newEntity) => await this.repository.Update(newEntity);
 }

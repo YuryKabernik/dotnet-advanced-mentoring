@@ -1,40 +1,56 @@
-﻿using CatalogService.Contracts.Interfaces;
+﻿using System.Linq.Expressions;
+using CatalogService.Contracts.Interfaces;
 using LinqToDB;
 
 namespace CatalogService.DataAccess.Repositories;
 
-public class Repository<TEntry> : IRepository<TEntry> where TEntry : class, ITableModel
+public class Repository<TSource> : IRepository<TSource> where TSource : class
 {
-    private readonly DbContext<TEntry> context;
+    private readonly DbContext<TSource> context;
 
-    public Repository(DbContext<TEntry> context)
+    public Repository(DbContext<TSource> context)
     {
         this.context = context;
     }
 
-    public async Task<TEntry?> Get(string id) => await this.context.Table.FirstOrDefaultAsync(row => row.Id == id);
-
-    public async Task<IEnumerable<TEntry>> Get() => await this.context.Table.ToListAsync();
-
-    public async Task Add(TEntry item) => await this.context.InsertOrReplaceAsync(item);
-
-    public async Task Delete(string id)
+    public async Task<IEnumerable<TSource>> Get(Expression<Func<TSource, bool>> predicate, int? top = default)
     {
-        TEntry? entry = await this.Get(id);
+        var query = this.context.Table.Where(predicate);
 
-        if (entry is not null)
+        if (top.HasValue)
         {
-            await this.context.DeleteAsync(entry);
+            query.Take(top.Value);
         }
+
+        return await query.ToListAsync();
     }
 
-    public async Task Update(string id, TEntry newEntry)
+    public async Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate)
     {
-        bool tableContainsItem = await this.context.Table.ContainsAsync(newEntry);
+        return await this.context.Table.FirstOrDefaultAsync(predicate);
+    }
 
-        if (newEntry.Id == id && tableContainsItem)
+    public async Task Add(TSource entry) => await this.context.InsertAsync(entry);
+
+    public async Task Delete(TSource entry) => await this.context.DeleteAsync(entry);
+
+    public async Task Update(TSource entry) => await this.context.UpdateAsync(entry);
+
+    private bool disposed = false;
+
+    public void Dispose()
+    {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!this.disposed && disposing)
         {
-            await this.context.UpdateAsync(newEntry);
+            this.context.Dispose();
         }
+
+        this.disposed = true;
     }
 }

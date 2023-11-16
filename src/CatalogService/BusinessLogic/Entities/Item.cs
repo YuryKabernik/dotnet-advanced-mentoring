@@ -1,8 +1,6 @@
-﻿using CatalogService.Contracts.Interfaces;
+﻿namespace CatalogService.BusinessLogic.Entities;
 
-namespace CatalogService.BusinessLogic.Entities;
-
-public class Item : ITableModel
+public class Item
 {
     public required string Id { get; set; }
     public required string Name { get; set; }

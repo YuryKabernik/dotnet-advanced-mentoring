@@ -6,7 +6,7 @@ namespace CatalogService.DataAccess;
 
 public class DbContext<TTable> : DataConnection where TTable : class
 {
-    public DbContext(DatabaseSettings settings) : base(ProviderName.SqlServer, settings.ConnectionString)
+    public DbContext(DatabaseSettings settings) : base(settings.Provider, settings.ConnectionString)
     {
         this.CommandTimeout = settings.Timeout;
     }
