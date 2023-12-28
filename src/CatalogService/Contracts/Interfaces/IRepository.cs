@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace CatalogService.Contracts.Interfaces;
+namespace CatalogService.Domain.Contracts.Interfaces;
 
 public interface IRepository<TSource> : IDisposable
 {

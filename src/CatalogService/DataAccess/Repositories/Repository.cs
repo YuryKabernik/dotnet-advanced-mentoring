@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using CatalogService.Contracts.Interfaces;
+using CatalogService.Domain.Contracts.Interfaces;
 using LinqToDB;
 
 namespace CatalogService.DataAccess.Repositories;

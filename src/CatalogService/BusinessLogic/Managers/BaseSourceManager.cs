@@ -1,4 +1,4 @@
-﻿using CatalogService.Contracts.Interfaces;
+﻿using CatalogService.Domain.Contracts.Interfaces;
 
 namespace CatalogService.BusinessLogic.Managers;
 
