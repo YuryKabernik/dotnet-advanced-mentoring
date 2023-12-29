@@ -1,6 +1,4 @@
-﻿using CatalogService.Domain.Contracts.Models;
-
-namespace CatalogService.Domain.Contracts.Interfaces;
+﻿namespace CatalogService.Domain.Contracts.Interfaces;
 
 public interface IManager<TEntity> : IDisposable
 {

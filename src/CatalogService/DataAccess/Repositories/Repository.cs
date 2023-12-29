@@ -1,56 +1,68 @@
 ﻿using System.Linq.Expressions;
 using CatalogService.Domain.Contracts.Interfaces;
-using LinqToDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace CatalogService.DataAccess.Repositories;
 
 public class Repository<TSource> : IRepository<TSource> where TSource : class
 {
-    private readonly DbContext<TSource> context;
+    private readonly SourceContext _context;
 
-    public Repository(DbContext<TSource> context)
+    public Repository(SourceContext context)
     {
-        this.context = context;
+        this._context = context;
     }
 
     public async Task<IEnumerable<TSource>> Get(Expression<Func<TSource, bool>> predicate, int? top = default)
     {
-        var query = this.context.Table.Where(predicate);
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        var query = this._context.Set<TSource>().Where(predicate);
 
         if (top.HasValue)
         {
-            query.Take(top.Value);
+            query = query.Take(top.Value);
         }
 
         return await query.ToListAsync();
     }
 
-    public async Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate)
+    public Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate)
     {
-        return await this.context.Table.FirstOrDefaultAsync(predicate);
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        return this._context.Set<TSource>().SingleOrDefaultAsync(predicate);
     }
 
-    public async Task Add(TSource entry) => await this.context.InsertAsync(entry);
+    public Task Add(TSource entry)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
 
-    public async Task Delete(TSource entry) => await this.context.DeleteAsync(entry);
+        this._context.Add(entry);
 
-    public async Task Update(TSource entry) => await this.context.UpdateAsync(entry);
+        return Task.CompletedTask;
+    }
 
-    private bool disposed = false;
+    public Task Delete(TSource entry)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+
+        this._context.Remove(entry);
+
+        return Task.CompletedTask;
+    }
+
+    public Task Update(TSource entry)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+
+        this._context.Update(entry);
+
+        return Task.CompletedTask;
+    }
 
     public void Dispose()
     {
-        this.Dispose(true);
         GC.SuppressFinalize(this);
-    }
-
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!this.disposed && disposing)
-        {
-            this.context.Dispose();
-        }
-
-        this.disposed = true;
     }
 }
