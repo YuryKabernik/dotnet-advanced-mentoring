@@ -1,6 +1,6 @@
 ﻿namespace CatalogService.Domain.Contracts.Interfaces;
 
-public interface IManager<TEntity> : IDisposable
+public interface IManager<TEntity>
 {
     Task AddAsync(TEntity entity);
     Task DeleteAsync(string id);

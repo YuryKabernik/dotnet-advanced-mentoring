@@ -13,7 +13,7 @@ public class Repository<TSource> : IRepository<TSource> where TSource : class
         this._context = context;
     }
 
-    public async Task<IEnumerable<TSource>> Get(Expression<Func<TSource, bool>> predicate, int? top = default)
+    public async Task<IEnumerable<TSource>> GetTopAsync(Expression<Func<TSource, bool>> predicate, int? top = default)
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
@@ -27,14 +27,14 @@ public class Repository<TSource> : IRepository<TSource> where TSource : class
         return await query.ToListAsync();
     }
 
-    public Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate)
+    public Task<TSource?> GetSingleAsync(Expression<Func<TSource, bool>> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
         return this._context.Set<TSource>().SingleOrDefaultAsync(predicate);
     }
 
-    public Task Add(TSource entry)
+    public Task AddAsync(TSource entry)
     {
         ArgumentNullException.ThrowIfNull(entry);
 
@@ -43,7 +43,7 @@ public class Repository<TSource> : IRepository<TSource> where TSource : class
         return Task.CompletedTask;
     }
 
-    public Task Delete(TSource entry)
+    public Task DeleteAsync(TSource entry)
     {
         ArgumentNullException.ThrowIfNull(entry);
 
@@ -52,7 +52,7 @@ public class Repository<TSource> : IRepository<TSource> where TSource : class
         return Task.CompletedTask;
     }
 
-    public Task Update(TSource entry)
+    public Task UpdateAsync(TSource entry)
     {
         ArgumentNullException.ThrowIfNull(entry);
 

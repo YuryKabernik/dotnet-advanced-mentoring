@@ -1,7 +1,7 @@
 ﻿using CatalogService.BusinessLogic.Entities;
 using CatalogService.Domain.Contracts.Interfaces;
 
-namespace CatalogService.BusinessLogic.Managers;
+namespace CatalogService.Application.Managers;
 
 public class CategoryManager : BaseSourceManager<Category>
 {
@@ -9,36 +9,36 @@ public class CategoryManager : BaseSourceManager<Category>
 
     public override async Task<Category?> GetAsync(string id)
     {
-        return await this.repository.GetFirst(c => c.Id == id);
+        return await this._repository.GetSingleAsync(c => c.Id == id);
     }
 
     public override async Task<IEnumerable<Category>> GetAsync()
     {
-        return await this.repository.Get(_ => true, 100);
+        return await this._repository.GetTopAsync(_ => true, 100);
     }
 
     public override async Task AddAsync(Category entity)
     {
-        await this.repository.Add(entity);
+        await this._repository.AddAsync(entity);
     }
 
     public override async Task DeleteAsync(string id)
     {
-        var deleteCandidate = await this.repository.GetFirst(c => c.Id == id);
+        var deleteCandidate = await this._repository.GetSingleAsync(c => c.Id == id);
 
         if (deleteCandidate is not null)
         {
-            await this.repository.Delete(deleteCandidate);
+            await this._repository.DeleteAsync(deleteCandidate);
         }
     }
 
     public override async Task UpdateAsync(Category category)
     {
-        var updateCandidtate = await this.repository.GetFirst(c => c.Id == category.Id);
+        var updateCandidate = await this._repository.GetSingleAsync(c => c.Id == category.Id);
 
-        if (updateCandidtate is not null)
+        if (updateCandidate is not null)
         {
-            await this.repository.Update(category);
+            await this._repository.UpdateAsync(category);
         }
     }
 }

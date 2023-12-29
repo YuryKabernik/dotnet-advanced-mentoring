@@ -2,11 +2,11 @@
 
 namespace CatalogService.Domain.Contracts.Interfaces;
 
-public interface IRepository<TSource> : IDisposable
+public interface IRepository<TSource>
 {
-    Task Add(TSource entry);
-    Task Delete(TSource entry);
-    Task<TSource?> GetFirst(Expression<Func<TSource, bool>> predicate);
-    Task<IEnumerable<TSource>> Get(Expression<Func<TSource, bool>> predicate, int? top = default);
-    Task Update(TSource entry);
+    Task AddAsync(TSource entry);
+    Task DeleteAsync(TSource entry);
+    Task<TSource?> GetSingleAsync(Expression<Func<TSource, bool>> predicate);
+    Task<IEnumerable<TSource>> GetTopAsync(Expression<Func<TSource, bool>> predicate, int? top = default);
+    Task UpdateAsync(TSource entry);
 }
