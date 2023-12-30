@@ -1,12 +1,17 @@
-﻿using System.Linq.Expressions;
+﻿using CatalogService.Domain.Contracts.Entities;
 
 namespace CatalogService.Domain.Contracts.Interfaces;
 
-public interface IRepository<TSource>
+public interface IRepository<TSource, in TEntityId>
+    where TSource : Entity<TEntityId>
 {
-    Task AddAsync(TSource entry);
-    Task DeleteAsync(TSource entry);
-    Task<TSource?> GetSingleAsync(Expression<Func<TSource, bool>> predicate);
-    Task<IEnumerable<TSource>> GetTopAsync(Expression<Func<TSource, bool>> predicate, int? top = default);
-    Task UpdateAsync(TSource entry);
+    Task<TSource?> GetSingleAsync(TEntityId id);
+    
+    Task<IEnumerable<TSource>> GetAllAsync();
+    
+    Task AddAsync(TSource entity);
+    
+    Task DeleteAsync(TSource entity);
+
+    Task UpdateAsync(TSource entity);
 }

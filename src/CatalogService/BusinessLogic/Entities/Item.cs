@@ -2,7 +2,7 @@
 
 namespace CatalogService.BusinessLogic.Entities;
 
-public class Item : Entity<string>
+public class Item : Entity<Guid>
 {
     public required string Name { get; set; }
     public string? Description { get; set; }
