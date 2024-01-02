@@ -18,6 +18,14 @@ public class Repository<TSource> : IRepository<TSource>
         this._specificationEvaluator = SpecificationEvaluator.Default;
     }
 
+    public Task<TSource> GetAsync(ISpecification<TSource> spec, CancellationToken cancellationToken = default)
+    {
+        var source = this._dbContext.Set<TSource>().AsQueryable();
+        var query = this._specificationEvaluator.GetQuery(source, spec);
+
+        return query.SingleAsync(cancellationToken);
+    }
+
     public Task<List<TSource>> ListAsync(ISpecification<TSource> spec, CancellationToken cancellationToken = default)
     {
         var source = this._dbContext.Set<TSource>().AsQueryable();

@@ -43,7 +43,7 @@ public static class CategoriesEndpoints
         IRepository<Category> repository,
         CancellationToken cancellationToken)
     {
-        var spec = new CategorySpec();
+        var spec = new CategoryQuerySpec();
 
         return repository.ListAsync(spec, cancellationToken);
     }
@@ -61,30 +61,26 @@ public static class CategoriesEndpoints
         return repository.AddAsync(category, cancellationToken);
     }
 
-    private static Task UpdateCategory(
+    private static async Task UpdateCategory(
         [FromRoute] Guid id,
         [FromBody] UpdateCategoryRequest updateCategoryRequest,
         IRepository<Category> repository,
         CancellationToken cancellationToken)
     {
-        var category = new Category
-        {
-            Id = Guid.Empty,
-            Name = "New Name"
-        };
-        return repository.UpdateAsync(category, cancellationToken);
+        var spec = new CategoryQuerySpec(id);
+        var category = await repository.GetAsync(spec, cancellationToken);
+
+        await repository.UpdateAsync(category, cancellationToken);
     }
 
-    private static Task DeleteCategory(
+    private static async Task DeleteCategory(
         [FromRoute] Guid id,
         IRepository<Category> repository,
         CancellationToken cancellationToken)
     {
-        var category = new Category
-        {
-            Id = Guid.Empty,
-            Name = "Name"
-        };
-        return repository.DeleteAsync(category, cancellationToken);
+        var spec = new CategoryQuerySpec(id);
+        var category = await repository.GetAsync(spec, cancellationToken);
+
+        await repository.DeleteAsync(category, cancellationToken);
     }
 }
