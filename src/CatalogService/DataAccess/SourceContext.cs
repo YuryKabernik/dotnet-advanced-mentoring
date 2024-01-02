@@ -1,4 +1,4 @@
-﻿using CatalogService.BusinessLogic.Entities;
+﻿using CatalogService.Domain.Entities;
 using CatalogService.DataAccess.Configuration;
 using Microsoft.EntityFrameworkCore;
 

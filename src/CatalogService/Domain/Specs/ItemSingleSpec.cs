@@ -1,7 +1,7 @@
 ﻿using Ardalis.Specification;
-using CatalogService.BusinessLogic.Entities;
+using CatalogService.Domain.Entities;
 
-namespace CatalogService.BusinessLogic.Specs;
+namespace CatalogService.Domain.Specs;
 
 public sealed class ItemSingleSpec : SingleResultSpecification<Item>
 {

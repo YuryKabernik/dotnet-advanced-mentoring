@@ -1,4 +1,4 @@
-namespace CatalogService.BusinessLogic.UnitTests;
+namespace CatalogService.Domain.UnitTests;
 
 public class UnitTest1
 {

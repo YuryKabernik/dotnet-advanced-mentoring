@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\CatalogService.Domain.csproj" />
+    <ProjectReference Include="..\Domain\CatalogService.Domain.csproj" />
     <ProjectReference Include="..\Contracts\CatalogService.Domain.Contracts.csproj" />
   </ItemGroup>
 

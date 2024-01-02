@@ -1,6 +1,6 @@
 ﻿using CatalogService.Domain.Contracts.Entities;
 
-namespace CatalogService.BusinessLogic.Entities;
+namespace CatalogService.Domain.Entities;
 
 public class Category : Entity<Guid>
 {
