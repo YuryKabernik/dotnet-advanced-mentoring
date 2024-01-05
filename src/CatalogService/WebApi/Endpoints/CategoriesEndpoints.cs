@@ -1,7 +1,9 @@
-﻿using CatalogService.Domain.Entities;
+﻿using CatalogService.Domain.Contracts.Interfaces;
+using CatalogService.Domain.Entities;
 using CatalogService.Domain.Specs;
-using CatalogService.Domain.Contracts.Interfaces;
 using CatalogService.WebApi.Requests;
+using CatalogService.WebApi.Requests.Mappings;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CatalogService.WebApi.Endpoints;
@@ -21,20 +23,20 @@ public static class CategoriesEndpoints
 
         root.MapPost("/", AddCategory)
             .Accepts<AddCategoryRequest>("application/json")
-            .Produces<List<Category>>()
+            .Produces<Category>()
             .WithSummary("Add a new category")
             .WithDescription("POST /api/categories");
 
         root.MapPut("/{id:guid}", UpdateCategory)
             .Accepts<UpdateCategoryRequest>("application/json")
-            .Produces<List<Category>>()
+            .Produces<Category>()
             .WithSummary("Update a Category by their Id")
-            .WithDescription("PUT /api/categories");
+            .WithDescription("PUT /api/categories/{id}");
 
         root.MapDelete("/{id:guid}", DeleteCategory)
             .Produces<List<Category>>()
             .WithSummary("Delete a Category by their Id")
-            .WithDescription("DELETE /api/categories");
+            .WithDescription("DELETE /api/categories/{id}");
 
         return application;
     }
@@ -48,29 +50,27 @@ public static class CategoriesEndpoints
         return repository.ListAsync(spec, cancellationToken);
     }
 
-    private static Task AddCategory(
-        [FromBody] AddCategoryRequest newCategoryRequest,
-        IRepository<Category> repository,
+    private static async Task<Category> AddCategory(
+        [FromBody] AddCategoryRequest addRequest,
+        IMediator mediator,
         CancellationToken cancellationToken)
     {
-        var category = new Category
-        {
-            Id = Guid.Empty,
-            Name = "Name"
-        };
-        return repository.AddAsync(category, cancellationToken);
+        var command = addRequest.ToCommand();
+        var result = await mediator.Send(command, cancellationToken);
+
+        return result.Category;
     }
 
-    private static async Task UpdateCategory(
+    private static async Task<Category> UpdateCategory(
         [FromRoute] Guid id,
-        [FromBody] UpdateCategoryRequest updateCategoryRequest,
-        IRepository<Category> repository,
+        [FromBody] UpdateCategoryRequest updateRequest,
+        IMediator mediator,
         CancellationToken cancellationToken)
     {
-        var spec = new CategoryQuerySpec(id);
-        var category = await repository.GetAsync(spec, cancellationToken);
+        var command = updateRequest.ToCommand(id);
+        var result = await mediator.Send(command, cancellationToken);
 
-        await repository.UpdateAsync(category, cancellationToken);
+        return result.Category;
     }
 
     private static async Task DeleteCategory(

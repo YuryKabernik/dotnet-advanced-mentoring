@@ -3,6 +3,8 @@
 public class UpdateCategoryRequest
 {
     public string? Name { get; set; }
-    public Uri? Image { get; set; }
-    public int? ParentCategory { get; set; }
+
+    public string? Image { get; set; }
+
+    public Guid? ParentCategory { get; set; }
 }
