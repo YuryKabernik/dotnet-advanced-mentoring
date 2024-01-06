@@ -35,7 +35,7 @@ public class ItemsMapper : IEntityTypeConfiguration<Item>
 
     private static void BuildCategoryColumn(EntityTypeBuilder<Item> entity)
     {
-        entity.Property(x => x.Category)
+        entity.Navigation(x => x.Category)
             .IsRequired();
     }
 

@@ -15,6 +15,8 @@ public class CategoryMapper : IEntityTypeConfiguration<Category>
         BuildNameColumn(builder);
         BuildImageColumn(builder);
         BuildParentCategoryColumn(builder);
+
+        BuildItemsRelationship(builder);
     }
 
     private static void BuildParentCategoryColumn(EntityTypeBuilder<Category> entityBuilder)
@@ -36,6 +38,13 @@ public class CategoryMapper : IEntityTypeConfiguration<Category>
         entityBuilder
             .Property(x => x.Name)
             .HasMaxLength(50)
+            .IsRequired();
+    }
+    
+    private static void BuildItemsRelationship(EntityTypeBuilder<Category> builder)
+    {
+        builder
+            .Navigation(x => x.Items)
             .IsRequired();
     }
 }

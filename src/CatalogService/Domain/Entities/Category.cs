@@ -9,4 +9,6 @@ public class Category : Entity<Guid>
     public Uri? Image { get; set; }
 
     public Category? ParentCategory { get; set; }
+
+    public virtual ICollection<Item> Items { get; set; } = new List<Item>();
 }
