@@ -14,5 +14,5 @@ public class Item : Entity<Guid>
 
     public required decimal Price { get; set; }
 
-    public required uint Amount { get; set; }
+    public required int Amount { get; set; }
 }
