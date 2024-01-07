@@ -8,13 +8,13 @@ public class Item
     /// Unique identifier of the item in external system.
     /// </summary>
     [BsonRequired]
-    required public string Id { get; set; }
+    public required string Id { get; set; }
 
     [BsonRequired]
-    required public string Name { get; set; }
+    public required string Name { get; set; }
     
     [BsonRequired]
-    required public decimal Price { get; set; }
+    public required decimal Price { get; set; }
     
     public Image? Image { get; set; }
     
