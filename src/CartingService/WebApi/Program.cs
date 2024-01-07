@@ -6,6 +6,9 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<object>(
+    builder.Configuration.GetSection(""));
+
 builder.Services.AddControllers();
 builder.Services.AddApiVersioning(options =>
     {
