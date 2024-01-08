@@ -21,7 +21,7 @@ public class AddCommandHandler : ICommandHandler<AddCommandRequest>
     public async Task Handle(AddCommandRequest request, CancellationToken cancellationToken)
     {
         Cart cart = await this.cartRepository.GetAsync(request.CartId);
-        Item selectedItem = await this.GetSelectedItem(request.Item);
+        Item selectedItem = await this.GetSelectedItem(request.Item, cancellationToken);
 
         bool isAdded = cart.Items.TryAdd(selectedItem.Id, selectedItem);
 
@@ -31,9 +31,9 @@ public class AddCommandHandler : ICommandHandler<AddCommandRequest>
         }
     }
 
-    private async Task<Item> GetSelectedItem(NewItem newItem)
+    private async Task<Item> GetSelectedItem(NewItem newItem, CancellationToken cancellation)
     {
-        return await this.catalogService.GetItem(newItem.Id)
+        return await this.catalogService.GetItem(newItem.Id, cancellation)
             ?? throw new CommandFailedException($"Item <{newItem.Id}> lookup failed.");
     }
 }
