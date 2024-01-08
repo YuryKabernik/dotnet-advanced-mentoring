@@ -1,16 +1,16 @@
 ﻿using CartingService.Abstractions.Interfaces;
-using CartingService.BusinessLogic.Queries;
 using CartingService.DataAccess.ValueObjects;
 using CartingService.DataAccess.Entities;
 using NSubstitute;
 using NSubstitute.ReceivedExtensions;
+using CartingService.BusinessLogic.Queries.Items;
 
 namespace CartingService.BusinessLogic.UnitTests;
 
 public class AllItemsQueryTests
 {
     private readonly IRepository<Cart> cartRepositoryMock;
-    private AllItemsQuery query;
+    private ItemsQueryHandler query;
     private Cart cartMock;
 
     public AllItemsQueryTests()
@@ -20,7 +20,7 @@ public class AllItemsQueryTests
 
         this.cartRepositoryMock = Substitute.For<IRepository<Cart>>();
 
-        this.query = new AllItemsQuery(this.cartRepositoryMock);
+        this.query = new ItemsQueryHandler(this.cartRepositoryMock);
     }
 
     [Fact]
@@ -28,10 +28,10 @@ public class AllItemsQueryTests
     {
         var guid = Guid.Empty.ToString();
         var expectedErrorMessage = $"Object reference not set to an instance of an object.";
-        var request = new ItemsRequest(guid);
+        var request = new ItemsQueryRequest(guid);
 
         var exception = await Assert.ThrowsAsync<NullReferenceException>(
-            () => this.query.Execute(request, CancellationToken.None)
+            () => this.query.Handle(request, CancellationToken.None)
         );
 
         Assert.Equal(expectedErrorMessage, exception.Message);
@@ -42,17 +42,17 @@ public class AllItemsQueryTests
     {
         // Given
         var guid = Guid.NewGuid().ToString();
-        var request = new ItemsRequest(guid);
+        var request = new ItemsQueryRequest(guid);
         var expectedItems = new List<Item>();
 
         this.cartRepositoryMock.GetAsync(guid).Returns(this.cartMock);
         this.cartMock.Items.Values.Returns(expectedItems);
 
         // When
-        var result = await query.Execute(request, CancellationToken.None);
+        var result = await query.Handle(request, CancellationToken.None);
 
         // Then
-        Assert.Equal(expectedItems, result);
+        Assert.Equal(expectedItems, result.Items);
         await this.cartRepositoryMock.Received(Quantity.Exactly(1)).GetAsync(guid);
     }
 }

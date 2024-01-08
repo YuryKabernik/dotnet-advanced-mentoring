@@ -1,6 +1,8 @@
+using MediatR;
+
 namespace CartingService.BusinessLogic.Interfaces.Handlers;
 
-public interface ICommandHandler<T>
+public interface ICommandHandler<TRequest> : IRequestHandler<TRequest>
+        where TRequest : IRequest
 {
-    Task Execute(T request, CancellationToken cancellationToken);
 }

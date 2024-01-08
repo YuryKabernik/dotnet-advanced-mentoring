@@ -5,23 +5,20 @@ using CartingService.BusinessLogic.Interfaces.Services;
 using CartingService.DataAccess.Entities;
 using CartingService.DataAccess.ValueObjects;
 
-namespace CartingService.BusinessLogic.Commands;
+namespace CartingService.BusinessLogic.Commands.Add;
 
-public record NewItem(string Id, int Quantity);
-public record AddRequest(string CartId, NewItem Item);
-
-public class AddCommand : ICommandHandler<AddRequest>
+public class AddCommandHandler : ICommandHandler<AddCommandRequest>
 {
     private ICatalogService catalogService;
     private readonly IRepository<Cart> cartRepository;
 
-    public AddCommand(IRepository<Cart> cartRepository, ICatalogService catalogService)
+    public AddCommandHandler(IRepository<Cart> cartRepository, ICatalogService catalogService)
     {
         this.cartRepository = cartRepository;
         this.catalogService = catalogService;
     }
 
-    public async Task Execute(AddRequest request, CancellationToken cancellationToken)
+    public async Task Handle(AddCommandRequest request, CancellationToken cancellationToken)
     {
         Cart cart = await this.cartRepository.GetAsync(request.CartId);
         Item selectedItem = await this.GetSelectedItem(request.Item);

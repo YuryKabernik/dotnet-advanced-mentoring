@@ -1,5 +1,5 @@
 ﻿using CartingService.Abstractions.Interfaces;
-using CartingService.BusinessLogic.Commands;
+using CartingService.BusinessLogic.Commands.Remove;
 using CartingService.BusinessLogic.Exceptions;
 using CartingService.DataAccess.Entities;
 using CartingService.DataAccess.ValueObjects;
@@ -12,19 +12,19 @@ namespace CartingService.BusinessLogic.UnitTests;
 public class RemoveCommandTests
 {
     private readonly Cart cartMock;
-    private readonly ILogger<RemoveCommand> loggerMock;
+    private readonly ILogger<RemoveCommandHandler> loggerMock;
     private readonly IRepository<Cart> cartRepositoryMock;
-    private readonly RemoveCommand command;
+    private readonly RemoveCommandHandler command;
 
     public RemoveCommandTests()
     {
         this.cartMock = Substitute.For<Cart>();
         this.cartMock.Items = Substitute.For<IDictionary<string, Item>>();
 
-        this.loggerMock = Substitute.For<ILogger<RemoveCommand>>();
+        this.loggerMock = Substitute.For<ILogger<RemoveCommandHandler>>();
         this.cartRepositoryMock = Substitute.For<IRepository<Cart>>();
 
-        this.command = new RemoveCommand(this.cartRepositoryMock, this.loggerMock);
+        this.command = new RemoveCommandHandler(this.cartRepositoryMock, this.loggerMock);
     }
 
     [Fact]
@@ -32,12 +32,12 @@ public class RemoveCommandTests
     {
         // Given
         var guid = Guid.Empty.ToString();
-        var request = new RemoveRequest(guid, default);
+        var request = new RemoveCommandRequest(guid, default);
         var expectedErrorMessage = $"Object reference not set to an instance of an object.";
 
         // When
         var exception = await Assert.ThrowsAsync<NullReferenceException>(
-            () => this.command.Execute(request, CancellationToken.None)
+            () => this.command.Handle(request, CancellationToken.None)
         );
 
         // Then
@@ -50,7 +50,7 @@ public class RemoveCommandTests
         // Given
         var itemId = "100";
         var guid = Guid.NewGuid().ToString();
-        var request = new RemoveRequest(guid, itemId);
+        var request = new RemoveCommandRequest(guid, itemId);
         var expectedErrorMessage = $"Item '{request.ItemId}' deletion failed.";
 
         this.cartMock.Items.Remove(Arg.Any<string>()).Returns(false);
@@ -58,7 +58,7 @@ public class RemoveCommandTests
 
         // When
         var exception = await Assert.ThrowsAsync<CommandFailedException>(
-            () => this.command.Execute(request, CancellationToken.None)
+            () => this.command.Handle(request, CancellationToken.None)
         );
 
         // Then
@@ -71,14 +71,14 @@ public class RemoveCommandTests
         // Given
         var itemId = "101";
         var guid = Guid.NewGuid().ToString();
-        var request = new RemoveRequest(guid, itemId);
+        var request = new RemoveCommandRequest(guid, itemId);
         var cancellationToken = new CancellationTokenSource().Token;
 
         this.cartMock.Items.Remove(Arg.Any<string>()).Returns(true);
         this.cartRepositoryMock.GetAsync(guid).Returns(this.cartMock);
 
         // When
-        await this.command.Execute(request, cancellationToken);
+        await this.command.Handle(request, cancellationToken);
 
         // Then
         await this.cartRepositoryMock.Received(1).GetAsync(guid);

@@ -4,34 +4,32 @@ using CartingService.BusinessLogic.Interfaces.Handlers;
 using CartingService.DataAccess.Entities;
 using Microsoft.Extensions.Logging;
 
-namespace CartingService.BusinessLogic.Commands;
+namespace CartingService.BusinessLogic.Commands.Remove;
 
-public record RemoveRequest(string CartId, string ItemId);
-
-public class RemoveCommand : ICommandHandler<RemoveRequest>
+public class RemoveCommandHandler : ICommandHandler<RemoveCommandRequest>
 {
-    private readonly ILogger<RemoveCommand> logger;
+    private readonly ILogger<RemoveCommandHandler> logger;
     private readonly IRepository<Cart> cartRepository;
 
-    public RemoveCommand(IRepository<Cart> cartRepository, ILogger<RemoveCommand> logger)
+    public RemoveCommandHandler(IRepository<Cart> cartRepository, ILogger<RemoveCommandHandler> logger)
     {
         this.logger = logger;
         this.cartRepository = cartRepository;
     }
 
-    public async Task Execute(RemoveRequest request, CancellationToken cancellationToken)
+    public async Task Handle(RemoveCommandRequest request, CancellationToken cancellationToken)
     {
         Cart cart = await cartRepository.GetAsync(request.CartId);
         bool isRemoved = cart.Items.Remove(request.ItemId);
 
         if (!isRemoved)
         {
-            this.logger.LogError("Failed to delete an item '{0}' in a cart '{1}'", request.ItemId, request.CartId);
+            logger.LogInformation($"Deleted an item '{request.ItemId}' in a cart '{request.CartId}'");
             throw new CommandFailedException($"Item '{request.ItemId}' deletion failed.");
         }
 
         await cartRepository.UpdateAsync(cart);
 
-        this.logger.LogError("Deleted an item '{0}' in a cart '{1}'", request.ItemId, cart.RawId);
+        logger.LogInformation($"Deleted an item '{request.ItemId}' in a cart '{cart.RawId}'");
     }
 }

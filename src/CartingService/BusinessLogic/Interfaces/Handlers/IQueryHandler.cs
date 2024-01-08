@@ -1,6 +1,8 @@
+using MediatR;
+
 namespace CartingService.BusinessLogic.Interfaces.Handlers;
 
 public interface IQueryHandler<TRequest, TResult>
+        where TRequest : IRequest<TResult>
 {
-    Task<TResult> Execute(TRequest request, CancellationToken cancellationToken);
 }
