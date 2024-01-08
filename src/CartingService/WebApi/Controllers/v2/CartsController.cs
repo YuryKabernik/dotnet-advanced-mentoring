@@ -2,8 +2,6 @@
 using CartingService.DataAccess.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
-using CartsControllerBase =  CartingService.WebApi.Controllers.CartsController;
-
 namespace CartingService.WebApi.Controllers.v2;
 
 /// <summary>
@@ -12,7 +10,7 @@ namespace CartingService.WebApi.Controllers.v2;
 [ApiVersion(2.0)]
 [ApiController]
 [Route("api/v{version:apiVersion}/carts/{cartId:alpha}")]
-public class CartsController : CartsControllerBase
+public class CartsController : ControllerBase
 {
     /// <summary>
     /// Get cart info.
@@ -23,7 +21,7 @@ public class CartsController : CartsControllerBase
     /// </returns>
     [HttpGet("/")]
     [ProducesResponseType<List<Item>>(StatusCodes.Status200OK)]
-    public override IResult Get(string cartId)
+    public IResult Get(string cartId)
     {
         var items = new List<Item>();
 

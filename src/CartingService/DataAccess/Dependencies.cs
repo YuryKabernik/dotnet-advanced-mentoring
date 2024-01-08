@@ -15,7 +15,7 @@ public static class Dependencies
 
         services.Configure<RepositorySettings>(section);
         
-        services.AddScoped(typeof(MongoContext<>), typeof(IMongoContext<>));
+        services.AddScoped(typeof(IMongoContext<>), typeof(MongoContext<>));
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;

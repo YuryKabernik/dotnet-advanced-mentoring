@@ -15,16 +15,35 @@ public class SwaggerGenOptionsBuilder(IApiVersionDescriptionProvider provider) :
     /// <inheritdoc />
     public void Configure(SwaggerGenOptions options)
     {
+        // add a custom operation filter which sets default values
+        options.OperationFilter<SwaggerOperationFilter>();
+
         // add a swagger document for each discovered API version
-        // note: you might choose to skip or document deprecated API versions differently
         foreach (var description in provider.ApiVersionDescriptions)
         {
             OpenApiInfo info = CreateInfoForApiVersion(description);
 
             options.SwaggerDoc(description.GroupName, info);
         }
+
+        IncludeXmlComments(options);
     }
 
+    /// <summary>
+    /// Inject human-friendly descriptions for Operations, Parameters and Schemas based on XML Comment files
+    /// </summary>
+    /// <param name="options"></param>
+    private static void IncludeXmlComments(SwaggerGenOptions options)
+    {
+        var xmlFilename = $"{typeof(SwaggerGenOptionsBuilder).Assembly.GetName().Name}.xml";
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    }
+
+    /// <summary>
+    /// Add a swagger document for each discovered API version.
+    /// </summary>
+    /// <param name="description"></param>
+    /// <returns></returns>
     private static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
     {
         var text = new StringBuilder("An example application with OpenAPI, Swashbuckle, and API versioning.");
@@ -34,6 +53,7 @@ public class SwaggerGenOptionsBuilder(IApiVersionDescriptionProvider provider) :
             Version = $"API Version: {description.ApiVersion}",
         };
 
+        // note: you might choose to skip or document deprecated API versions differently
         if (description.IsDeprecated)
         {
             text.Append(" This API version has been deprecated.");
