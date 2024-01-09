@@ -1,8 +1,13 @@
 ﻿using System.Net.Mime;
+using System.Threading;
 using Asp.Versioning;
+using CartingService.BusinessLogic.Commands.Add;
+using CartingService.BusinessLogic.Commands.Remove;
+using CartingService.BusinessLogic.Queries.Items;
 using CartingService.DataAccess.Entities;
 using CartingService.DataAccess.ValueObjects;
 using CartingService.WebApi.Requests;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartingService.WebApi.Controllers;
@@ -13,24 +18,27 @@ namespace CartingService.WebApi.Controllers;
 [ApiVersion(1.0)]
 [ApiController]
 [Route("api/v{version:apiVersion}/carts/{cartId:alpha}")]
-public class CartsController : ControllerBase
+public class CartsController(IMediator mediator) : ControllerBase
 {
+
     /// <summary>
     ///     Get cart info.
     /// </summary>
     /// <param name="cartId">
     ///     Cart unique Key (string)
     /// </param>
+    /// <param name="cancellationToken"></param>
     /// <returns>
     ///     Returns a cart model (cart key + list of cart items).
     /// </returns>
     [HttpGet("/")]
     [ProducesResponseType<Cart>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public virtual IResult Get(string cartId)
+    public virtual async Task<IResult> GetAsync(string cartId, CancellationToken cancellationToken)
     {
-        var cart = new Cart() { PrimaryId = default, RawId = default };
-        
+        var query = new ItemsQueryRequest(cartId);
+        var cart = await mediator.Send(query, cancellationToken);
+
         return Results.Ok(cart);
     }
 
@@ -53,8 +61,13 @@ public class CartsController : ControllerBase
     [ProducesResponseType<Item>(StatusCodes.Status200OK)]
     [ProducesResponseType<Item>(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public IResult Add(string cartId, CartNewItem newItem)
+    public async Task<IResult> AddAsync(string cartId, CartNewItem newItem, CancellationToken cancellationToken)
     {
+        var item = new NewItem(newItem.Id, newItem.Quantity);
+        var command = new AddCommandRequest(cartId, item);
+
+        await mediator.Send(command, cancellationToken);
+
         return Results.Ok();
     }
 
@@ -70,11 +83,14 @@ public class CartsController : ControllerBase
     /// <returns>
     ///     Returns 200 if item was deleted, otherwise returns corresponding HTTP code.
     /// </returns>
-    [HttpDelete("/{itemId:int}")]
+    [HttpDelete("/{itemId:alpha}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public IResult Delete(string cartId, int itemId)
+    public async Task<IResult> DeleteAsync(string cartId, string itemId, CancellationToken cancellationToken)
     {
+        var command = new RemoveCommandRequest(cartId, itemId);
+        await mediator.Send(command, cancellationToken);
+
         return Results.Ok();
     }
 }
