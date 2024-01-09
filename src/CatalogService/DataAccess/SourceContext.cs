@@ -1,6 +1,7 @@
 ﻿using CatalogService.Domain.Entities;
 using CatalogService.DataAccess.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace CatalogService.DataAccess;
 
@@ -8,12 +9,13 @@ public class SourceContext : DbContext
 {
     private readonly DatabaseSettings _settings;
 
-    public SourceContext(DatabaseSettings settings)
+    public SourceContext(IOptions<DatabaseSettings> settings)
     {
-        _settings = settings;
+        this._settings = settings.Value;
     }
 
     public required DbSet<Category> Categories { get; set; }
+
     public required DbSet<Item> Items { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -21,8 +23,8 @@ public class SourceContext : DbContext
         base.OnConfiguring(optionsBuilder);
 
         optionsBuilder.UseSqlServer(
-            _settings.ConnectionString,
-            options => options.CommandTimeout(_settings.Timeout)
+            this._settings.ConnectionString,
+            options => options.CommandTimeout(this._settings.Timeout)
         );
     }
 
