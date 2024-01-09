@@ -1,4 +1,4 @@
-﻿using Application.Items.AddCommand;
+﻿using System.Net.Mime;
 using CatalogService.Domain.Contracts.Interfaces;
 using CatalogService.Domain.Entities;
 using CatalogService.Domain.Specs;
@@ -10,10 +10,10 @@ namespace CatalogService.WebApi.Endpoints;
 
 public static class ItemsEndpoints
 {
-    public static WebApplication MapEndpoints(this WebApplication application)
+    public static WebApplication UseItemsEndpoints(this WebApplication application)
     {
         var root = application.MapGroup("/api/items")
-            .WithTags("items", "item")
+            .WithTags("Items")
             .WithOpenApi();
 
         root.MapGet("/category/{categoryId:guid}", GetAllItems)
@@ -22,13 +22,13 @@ public static class ItemsEndpoints
             .WithDescription("GET /api/items/category/{category-id}?page={number}&perPage={number}");
 
         root.MapPost("/", AddItem)
-            .Accepts<AddItemRequest>("application/json")
+            .Accepts<AddItemRequest>(MediaTypeNames.Application.Json)
             .Produces<Item>()
             .WithSummary("Add an item")
             .WithDescription("POST /api/items");
 
         root.MapPut("/{id:guid}", UpdateItem)
-            .Accepts<UpdateItemRequest>("application/json")
+            .Accepts<UpdateItemRequest>(MediaTypeNames.Application.Json)
             .Produces<Item>()
             .WithSummary("Update an item")
             .WithDescription("PUT /api/items/{item-id}");
@@ -40,7 +40,7 @@ public static class ItemsEndpoints
         return application;
     }
 
-    private static async Task<List<Item>> GetAllItems(
+    public static async Task<IResult> GetAllItems(
         [FromRoute] Guid categoryId,
         [FromQuery] int page,
         [FromQuery] int perPage,
@@ -50,10 +50,10 @@ public static class ItemsEndpoints
         var query = new CategoryQuerySpec(categoryId);
         var category = await repository.GetAsync(query, cancellationToken);
 
-        return category.Items.ToList();
+        return Results.Ok(category.Items);
     }
 
-    private static async Task<Item> AddItem(
+    public static async Task<IResult> AddItem(
         [FromBody] AddItemRequest request,
         IMediator mediator,
         CancellationToken cancellationToken)
@@ -61,10 +61,10 @@ public static class ItemsEndpoints
         var command = request.ToCommand();
         var result = await mediator.Send(command, cancellationToken);
 
-        return result.Item;
+        return Results.Ok(result.Item);
     }
 
-    private static async Task UpdateItem(
+    public static async Task<IResult> UpdateItem(
         [FromRoute] Guid id,
         [FromBody] UpdateItemRequest request,
         IMediator mediator,
@@ -72,9 +72,11 @@ public static class ItemsEndpoints
     {
         var command = request.ToCommand(id);
         var result = await mediator.Send(command, cancellationToken);
+
+        return Results.Ok(result.Item);
     }
 
-    private static async Task DeleteItem(
+    public static async Task<IResult> DeleteItem(
         [FromRoute] Guid id,
         IRepository<Item> repository,
         CancellationToken cancellationToken)
@@ -83,5 +85,7 @@ public static class ItemsEndpoints
         var item = await repository.GetAsync(query, cancellationToken);
 
         await repository.DeleteAsync(item, cancellationToken);
+
+        return Results.Ok();
     }
 }

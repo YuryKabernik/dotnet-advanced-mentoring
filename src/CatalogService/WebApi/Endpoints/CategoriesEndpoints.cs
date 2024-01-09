@@ -1,4 +1,5 @@
-﻿using CatalogService.Domain.Contracts.Interfaces;
+﻿using System.Net.Mime;
+using CatalogService.Domain.Contracts.Interfaces;
 using CatalogService.Domain.Entities;
 using CatalogService.Domain.Specs;
 using CatalogService.WebApi.Requests;
@@ -10,10 +11,10 @@ namespace CatalogService.WebApi.Endpoints;
 
 public static class CategoriesEndpoints
 {
-    public static WebApplication MapEndpoints(this WebApplication application)
+    public static WebApplication UseCategoryEndpoints(this WebApplication application)
     {
         var root = application.MapGroup("/api/categories")
-            .WithTags("categories", "category")
+            .WithTags("Categories")
             .WithOpenApi();
 
         root.MapGet("/", GetAllCategories)
@@ -22,13 +23,13 @@ public static class CategoriesEndpoints
             .WithDescription("GET /api/categories");
 
         root.MapPost("/", AddCategory)
-            .Accepts<AddCategoryRequest>("application/json")
+            .Accepts<AddCategoryRequest>(MediaTypeNames.Application.Json)
             .Produces<Category>()
             .WithSummary("Add a new category")
             .WithDescription("POST /api/categories");
 
         root.MapPut("/{id:guid}", UpdateCategory)
-            .Accepts<UpdateCategoryRequest>("application/json")
+            .Accepts<Category>(MediaTypeNames.Application.Json)
             .Produces<Category>()
             .WithSummary("Update a Category by their Id")
             .WithDescription("PUT /api/categories/{id}");
@@ -41,16 +42,17 @@ public static class CategoriesEndpoints
         return application;
     }
 
-    private static Task<List<Category>> GetAllCategories(
+    public static async Task<IResult> GetAllCategories(
         IRepository<Category> repository,
         CancellationToken cancellationToken)
     {
         var spec = new CategoryQuerySpec();
-
-        return repository.ListAsync(spec, cancellationToken);
+        var result = await repository.ListAsync(spec, cancellationToken);
+    
+        return Results.Ok(result);
     }
 
-    private static async Task<Category> AddCategory(
+    public static async Task<IResult> AddCategory(
         [FromBody] AddCategoryRequest addRequest,
         IMediator mediator,
         CancellationToken cancellationToken)
@@ -58,10 +60,10 @@ public static class CategoriesEndpoints
         var command = addRequest.ToCommand();
         var result = await mediator.Send(command, cancellationToken);
 
-        return result.Category;
+        return Results.Ok(result.Category);
     }
 
-    private static async Task<Category> UpdateCategory(
+    public static async Task<IResult> UpdateCategory(
         [FromRoute] Guid id,
         [FromBody] UpdateCategoryRequest updateRequest,
         IMediator mediator,
@@ -70,10 +72,10 @@ public static class CategoriesEndpoints
         var command = updateRequest.ToCommand(id);
         var result = await mediator.Send(command, cancellationToken);
 
-        return result.Category;
+        return Results.Ok(result.Category);
     }
 
-    private static async Task DeleteCategory(
+    public static async Task<IResult> DeleteCategory(
         [FromRoute] Guid id,
         IRepository<Category> repository,
         CancellationToken cancellationToken)
@@ -82,5 +84,7 @@ public static class CategoriesEndpoints
         var category = await repository.GetAsync(spec, cancellationToken);
 
         await repository.DeleteAsync(category, cancellationToken);
+
+        return Results.Ok();
     }
 }

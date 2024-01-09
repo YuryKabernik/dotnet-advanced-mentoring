@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Application
+namespace CatalogService.Application
 {
-    public class DependencyRegistry
+    public static class DependencyRegistry
     {
-        public static IServiceCollection AddDependencies(IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining<DependencyRegistry>());
+            services.AddMediatR(configuration => configuration.RegisterServicesFromAssemblyContaining(typeof(DependencyRegistry)));
 
             return services;
         }
