@@ -1,5 +1,7 @@
 ﻿using CartingService.BusinessLogic.Interfaces.Services;
 using CartingService.DataAccess.ValueObjects;
+using CartingService.WebApi.Options;
+using Microsoft.Extensions.Options;
 
 namespace CartingService.WebApi.Services
 {
@@ -7,9 +9,11 @@ namespace CartingService.WebApi.Services
     /// 
     /// </summary>
     /// <param name="httpClientFactory"></param>
-    public class CatalogService(IHttpClientFactory httpClientFactory) : ICatalogService
+    /// <param name="options"></param>
+    public class CatalogService(IHttpClientFactory httpClientFactory, IOptions<CatalogServiceOptions> options) : ICatalogService
     {
         private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
+        private readonly CatalogServiceOptions _options = options.Value;
 
         /// <summary>
         /// 
@@ -22,10 +26,10 @@ namespace CartingService.WebApi.Services
         {
             using var client = this._httpClientFactory.CreateClient();
 
-            client.BaseAddress = new Uri("https://localhost:8888/");
+            client.BaseAddress = new Uri(this._options.BaseAddress);
 
-            var result = await client.GetAsync("/", cancellation);
-            var item = await result.Content.ReadFromJsonAsync<Item>();
+            var result = await client.GetAsync(this._options.Path, cancellation);
+            var item = await result.Content.ReadFromJsonAsync<Item>(cancellation);
 
             return item;
         }

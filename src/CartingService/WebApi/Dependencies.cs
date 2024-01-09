@@ -1,4 +1,5 @@
 ﻿using CartingService.BusinessLogic.Interfaces.Services;
+using CartingService.WebApi.Options;
 using CartingService.WebApi.Services;
 using BusinessLogicDependencies = CartingService.BusinessLogic.Dependencies;
 
@@ -17,11 +18,20 @@ public static class Dependencies
     /// <returns></returns>
     public static IServiceCollection Register(this IServiceCollection services, IConfigurationRoot configuration)
     {
-        services.AddHttpClient();
-        services.AddScoped<ICatalogService, CatalogService>();
+        services
+            .AddHttpClient()
+            .AddCatalogService(configuration);
 
         BusinessLogicDependencies.Register(services, configuration);
 
         return services;
+    }
+
+    private static void AddCatalogService(this IServiceCollection services, IConfigurationRoot configuration)
+    {
+        var config = configuration.GetSection(CatalogServiceOptions.Key);
+        
+        services.Configure<CatalogServiceOptions>(config);
+        services.AddScoped<ICatalogService, CatalogService>();
     }
 }
